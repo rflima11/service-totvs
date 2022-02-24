@@ -1,0 +1,21 @@
+logging:
+  level:
+    org:
+      springframework:
+        ws:
+          server:
+            MessageTracing:
+              received: TRACE
+              sent: DEBUG
+          client:
+            MessageTracing:
+              sent: DEBUG
+              received: TRACE
+        web: DEBUG
+
+soap:
+  default-uri: ${SOAP_DEFAULT_URI:http://192.91.254.104:8051/wsConsultaSQL/IwsConsultaSQL}
+  action: ${SOAP_ACTION:http://www.totvs.com/IwsConsultaSQL/RealizarConsultaSQL}
+  package-wsdl: ${SOAP_PACKAGE_WSDL:br.com.businesstec.servicetotvs.wsdl}
+  username: ${SOAP_USERNAME:integracaoJet}
+  password: ${SOAP_PASSWORD:integr@jet#}
