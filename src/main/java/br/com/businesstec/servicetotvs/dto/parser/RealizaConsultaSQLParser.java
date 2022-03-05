@@ -13,6 +13,7 @@ public class RealizaConsultaSQLParser {
         var objectFactory = new ObjectFactory();
         request.setCodSentenca(objectFactory.createRealizarConsultaSQLCodSentenca(parametrosDTO.getCodSetenca()));
         request.setCodSistema(objectFactory.createRealizarConsultaSQLCodSistema(parametrosDTO.getCodSistema()));
+        request.setParameters(objectFactory.createRealizarConsultaSQLParameters(parametrosDTO.getDatasincParameter()));
         request.setCodColigada(parametrosDTO.getCodColigada());
         return request;
     }
