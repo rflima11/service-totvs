@@ -1,4 +1,4 @@
-package br.com.businesstec.servicetotvs.dto.parser;
+package br.com.businesstec.servicetotvs.parser;
 
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
 import br.com.businesstec.servicetotvs.wsdl.ObjectFactory;

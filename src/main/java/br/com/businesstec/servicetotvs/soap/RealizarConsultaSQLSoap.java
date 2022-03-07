@@ -2,7 +2,7 @@ package br.com.businesstec.servicetotvs.soap;
 
 import br.com.businesstec.servicetotvs.config.properties.SoapProperties;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
-import br.com.businesstec.servicetotvs.dto.parser.RealizaConsultaSQLParser;
+import br.com.businesstec.servicetotvs.parser.RealizaConsultaSQLParser;
 import br.com.businesstec.servicetotvs.wsdl.RealizarConsultaSQLResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;

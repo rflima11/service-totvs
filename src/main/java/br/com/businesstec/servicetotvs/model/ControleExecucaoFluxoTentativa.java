@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class ControleExecucaoFluxoTentativa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
@@ -29,6 +29,13 @@ public class ControleExecucaoFluxoTentativa {
 
     @Column(name = "descricao_erro")
     private String descricaoErro;
+
+    public ControleExecucaoFluxoTentativa(Long idExecucaoFluxo) {
+        this.idExecucaoFluxo = idExecucaoFluxo;
+        this.dataHora = LocalDateTime.now();
+        this.tipo = 0;
+        this.erro = false;
+    }
 
     public Long getId() {
         return id;

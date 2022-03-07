@@ -13,7 +13,7 @@ artemis:
   queue:
     fluxo: queue.fluxo
 server:
-  port: 8081
+  port: 8082
 
 soap:
   default-uri: ${SOAP_DEFAULT_URI:http://192.91.254.104:8051/wsConsultaSQL/IwsConsultaSQL}

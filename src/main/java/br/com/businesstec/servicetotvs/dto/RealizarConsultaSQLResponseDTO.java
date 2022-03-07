@@ -1,20 +1,20 @@
 package br.com.businesstec.servicetotvs.dto;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement
+@XmlRootElement(name = "NewDataSet")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class RealizarConsultaSQLResponseDTO {
 
     @XmlElement(name = "Resultado")
-    private List<ResultadoDTO> resultados;
+    private List<MarcaDTO> resultados;
 
-    public List<ResultadoDTO> getResultados() {
+    public List<MarcaDTO> getResultados() {
         return resultados;
     }
 
-    public void setResultados(List<ResultadoDTO> resultados) {
+    public void setResultados(List<MarcaDTO> resultados) {
         this.resultados = resultados;
     }
 }

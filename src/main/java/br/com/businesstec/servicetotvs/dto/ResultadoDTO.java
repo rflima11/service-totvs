@@ -1,16 +1,18 @@
 package br.com.businesstec.servicetotvs.dto;
 
-import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
-public class ResultadoDTO<T> {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class ResultadoDTO {
 
-    private List<T> t;
+    private MarcaDTO t;
 
-    public List<T> getT() {
+    public MarcaDTO getT() {
         return t;
     }
 
-    public void setT(List<T> t) {
+    public void setT(MarcaDTO t) {
         this.t = t;
     }
 }

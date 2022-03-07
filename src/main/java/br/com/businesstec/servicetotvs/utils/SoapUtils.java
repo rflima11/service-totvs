@@ -1,14 +1,16 @@
 package br.com.businesstec.servicetotvs.utils;
 
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
+import br.com.businesstec.servicetotvs.dto.RealizarConsultaSQLResponseDTO;
 import br.com.businesstec.servicetotvs.wsdl.RealizarConsultaSQLResponse;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import java.io.StringReader;
 import java.io.StringWriter;
 
-public class  SoapUtils {
+public class SoapUtils {
 
     private SoapUtils() { throw new IllegalStateException("Classe utilitária não deve ser instanciada"); }
 
@@ -28,5 +30,16 @@ public class  SoapUtils {
             e.printStackTrace();
         }
         return xmlString;
+    }
+
+    public static RealizarConsultaSQLResponseDTO toResponseDTO(String xmlString) {
+        try {
+            var jaxbContext = JAXBContext.newInstance(RealizarConsultaSQLResponseDTO.class);
+            var unmarshaller = jaxbContext.createUnmarshaller();
+            return (RealizarConsultaSQLResponseDTO) unmarshaller.unmarshal(new StringReader(xmlString));
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

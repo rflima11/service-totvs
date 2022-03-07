@@ -1,17 +1,22 @@
 package br.com.businesstec.servicetotvs.dto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Marca {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class MarcaDTO {
 
     @XmlElement(name = "NAME")
     private String name;
     @XmlElement(name = "FEATURED")
-    private Boolean featured;
+    private String featured;
     @XmlElement(name = "EXTERNALID")
-    private Integer externalId;
+    private String externalId;
     @XmlElement(name = "ACTIVE")
-    private Boolean active;
+    private String active;
 
     public String getName() {
         return name;
@@ -21,27 +26,27 @@ public class Marca {
         this.name = name;
     }
 
-    public Boolean getFeatured() {
+    public String getFeatured() {
         return featured;
     }
 
-    public void setFeatured(Boolean featured) {
+    public void setFeatured(String featured) {
         this.featured = featured;
     }
 
-    public Integer getExternalId() {
+    public String getExternalId() {
         return externalId;
     }
 
-    public void setExternalId(Integer externalId) {
+    public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
-    public Boolean getActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(String active) {
         this.active = active;
     }
 }
