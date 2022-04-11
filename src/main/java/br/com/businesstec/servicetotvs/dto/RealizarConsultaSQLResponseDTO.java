@@ -8,13 +8,13 @@ import java.util.List;
 public class RealizarConsultaSQLResponseDTO {
 
     @XmlElement(name = "Resultado")
-    private List<MarcaDTO> resultados;
+    private List<ObjetoTOTVS> resultados;
 
-    public List<MarcaDTO> getResultados() {
+    public List<ObjetoTOTVS> getResultados() {
         return resultados;
     }
 
-    public void setResultados(List<MarcaDTO> resultados) {
+    public void setResultados(List<ObjetoTOTVS> resultados) {
         this.resultados = resultados;
     }
 }

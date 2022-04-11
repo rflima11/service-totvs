@@ -3,26 +3,21 @@ package br.com.businesstec.servicetotvs.model.entidades;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "marca")
-public class Marca {
+@Table(name = "variacao")
+public class Variacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "id_entidade")
-    private Long idEntidade;
+
     @Column(name = "identificador_origem")
     private String identificadorOrigem;
+
+    @Column(name = "id_entidade")
+    private Long idEntidade;
+
     @Column(name = "descricao")
     private String descricao;
-
-    public Marca() {}
-
-    public Marca(Long idEntidade, String identificadorOrigem, String descricao) {
-        this.idEntidade = idEntidade;
-        this.identificadorOrigem = identificadorOrigem;
-        this.descricao = descricao;
-    }
 
     public Long getId() {
         return id;
@@ -30,14 +25,6 @@ public class Marca {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getIdEntidade() {
-        return idEntidade;
-    }
-
-    public void setIdEntidade(Long idEntidade) {
-        this.idEntidade = idEntidade;
     }
 
     public String getIdentificadorOrigem() {
@@ -48,6 +35,14 @@ public class Marca {
         this.identificadorOrigem = identificadorOrigem;
     }
 
+    public Long getIdEntidade() {
+        return idEntidade;
+    }
+
+    public void setIdEntidade(Long idEntidade) {
+        this.idEntidade = idEntidade;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -55,4 +50,5 @@ public class Marca {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
 }

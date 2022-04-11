@@ -1,4 +1,4 @@
-package br.com.businesstec.servicetotvs.parser;
+package br.com.businesstec.servicetotvs.mapper;
 
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
 import br.com.businesstec.servicetotvs.wsdl.ObjectFactory;
@@ -13,7 +13,7 @@ public class RealizaConsultaSQLParser {
         var objectFactory = new ObjectFactory();
         request.setCodSentenca(objectFactory.createRealizarConsultaSQLCodSentenca(parametrosDTO.getCodSetenca()));
         request.setCodSistema(objectFactory.createRealizarConsultaSQLCodSistema(parametrosDTO.getCodSistema()));
-        request.setParameters(objectFactory.createRealizarConsultaSQLParameters(parametrosDTO.getDatasincParameter()));
+        request.setParameters(objectFactory.createRealizarConsultaSQLParameters(parametrosDTO.getParameters()));
         request.setCodColigada(parametrosDTO.getCodColigada());
         return request;
     }

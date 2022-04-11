@@ -132,7 +132,7 @@
 					<generatePackage>br.com.businesstec.servicetotvs.wsdl</generatePackage>
 					<schemas>
 						<schema>
-							<url>http://192.91.254.104:8051/wsConsultaSQL/MEX?wsdl</url>
+							<url>http://192.168.204.4:8051/wsConsultaSQL/MEX?wsdl</url>
 						</schema>
 					</schemas>
 				</configuration>

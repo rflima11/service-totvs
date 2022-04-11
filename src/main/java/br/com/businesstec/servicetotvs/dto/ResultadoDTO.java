@@ -6,13 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResultadoDTO {
 
-    private MarcaDTO t;
+    private ObjetoTOTVS t;
 
-    public MarcaDTO getT() {
+    public ObjetoTOTVS getT() {
         return t;
     }
 
-    public void setT(MarcaDTO t) {
+    public void setT(ObjetoTOTVS t) {
         this.t = t;
     }
 }

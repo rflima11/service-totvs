@@ -13,7 +13,23 @@ artemis:
   queue:
     fluxo: queue.fluxo
 server:
-  port: 8082
+  port: 8083
+
+logging:
+  level:
+    org:
+      springframework:
+        ws:
+          server:
+            MessageTracing:
+              received: TRACE
+              sent: DEBUG
+          client:
+            MessageTracing:
+              sent: DEBUG
+              received: TRACE
+        web: DEBUG
+
 
 soap:
   default-uri: ${SOAP_DEFAULT_URI:http://192.91.254.104:8051/wsConsultaSQL/IwsConsultaSQL}

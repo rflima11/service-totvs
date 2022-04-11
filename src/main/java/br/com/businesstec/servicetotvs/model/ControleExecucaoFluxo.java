@@ -18,8 +18,16 @@ public class ControleExecucaoFluxo {
     @Column(name = "data_hora")
     private LocalDateTime dataHora;
 
-    @Column(name = "id_entidade")
-    private Long idEntidade;
+    private Boolean erro;
+
+    @Column(name = "descricao_erro")
+    private String descricaoErro;
+
+    public ControleExecucaoFluxo() {}
+
+    public ControleExecucaoFluxo(Long idControleFluxo) {
+        this.idControleFluxo = idControleFluxo;
+    }
 
     public Long getId() {
         return id;
@@ -45,12 +53,24 @@ public class ControleExecucaoFluxo {
         this.dataHora = dataHora;
     }
 
-    public Long getIdEntidade() {
-        return idEntidade;
+    public Boolean getErro() {
+        return erro;
     }
 
-    public void setIdEntidade(Long idEntidade) {
-        this.idEntidade = idEntidade;
+    public void setErro(Boolean erro) {
+        this.erro = erro;
+    }
+
+    public String getDescricaoErro() {
+        return descricaoErro;
+    }
+
+    public void setDescricaoErro(String descricaoErro) {
+        this.descricaoErro = descricaoErro;
+    }
+
+    public void atualizarHora() {
+        this.dataHora = LocalDateTime.now();
     }
 }
 

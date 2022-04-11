@@ -1,6 +1,6 @@
 package br.com.businesstec.servicetotvs.factory;
 
-import br.com.businesstec.servicetotvs.enums.NomeStrategy;
+import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 import br.com.businesstec.servicetotvs.service.EntidadeStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,18 +12,18 @@ import java.util.Set;
 @Component
 public class StrategyFactory {
 
-    private Map<NomeStrategy, EntidadeStrategy> strategies;
+    private Map<EnumNomeStrategy, EntidadeStrategy> strategies;
 
     @Autowired
     public StrategyFactory(Set<EntidadeStrategy> strategySet) {
         createStrategy(strategySet);
     }
 
-    public EntidadeStrategy findStrategy(NomeStrategy strategyName) {
+    public EntidadeStrategy findStrategy(EnumNomeStrategy strategyName) {
         return strategies.get(strategyName);
     }
     private void createStrategy(Set<EntidadeStrategy> strategySet) {
-        strategies = new HashMap<NomeStrategy, EntidadeStrategy>();
+        strategies = new HashMap<EnumNomeStrategy, EntidadeStrategy>();
         strategySet.forEach(
                 strategy ->strategies.put(strategy.getNomeStrategy(), strategy));
     }

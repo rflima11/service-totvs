@@ -3,8 +3,8 @@ package br.com.businesstec.servicetotvs.model.entidades;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "marca")
-public class Marca {
+@Table(name = "categoria")
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,14 +15,10 @@ public class Marca {
     private String identificadorOrigem;
     @Column(name = "descricao")
     private String descricao;
+    @Column(name = "nivel_superior")
+    private String nivelSuperior;
 
-    public Marca() {}
-
-    public Marca(Long idEntidade, String identificadorOrigem, String descricao) {
-        this.idEntidade = idEntidade;
-        this.identificadorOrigem = identificadorOrigem;
-        this.descricao = descricao;
-    }
+    public Categoria() {}
 
     public Long getId() {
         return id;
@@ -54,5 +50,13 @@ public class Marca {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getNivelSuperior() {
+        return nivelSuperior;
+    }
+
+    public void setNivelSuperior(String nivelSuperior) {
+        this.nivelSuperior = nivelSuperior;
     }
 }

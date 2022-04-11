@@ -3,25 +3,28 @@ package br.com.businesstec.servicetotvs.model.entidades;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "marca")
-public class Marca {
+@Table(name = "variacao_item")
+public class VariacaoItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "id_entidade")
-    private Long idEntidade;
+
     @Column(name = "identificador_origem")
     private String identificadorOrigem;
+
+    @Column(name = "id_variacao")
+    private Long idVariacao;
+
     @Column(name = "descricao")
     private String descricao;
 
-    public Marca() {}
+    public VariacaoItem() { this.idVariacao = 1L; }
 
-    public Marca(Long idEntidade, String identificadorOrigem, String descricao) {
-        this.idEntidade = idEntidade;
+    public VariacaoItem(String identificadorOrigem, String descricao) {
         this.identificadorOrigem = identificadorOrigem;
         this.descricao = descricao;
+        this.idVariacao = 1L;
     }
 
     public Long getId() {
@@ -32,20 +35,20 @@ public class Marca {
         this.id = id;
     }
 
-    public Long getIdEntidade() {
-        return idEntidade;
-    }
-
-    public void setIdEntidade(Long idEntidade) {
-        this.idEntidade = idEntidade;
-    }
-
     public String getIdentificadorOrigem() {
         return identificadorOrigem;
     }
 
     public void setIdentificadorOrigem(String identificadorOrigem) {
         this.identificadorOrigem = identificadorOrigem;
+    }
+
+    public Long getIdVariacao() {
+        return idVariacao;
+    }
+
+    public void setIdVariacao(Long idVariacao) {
+        this.idVariacao = idVariacao;
     }
 
     public String getDescricao() {
