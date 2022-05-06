@@ -1,7 +1,7 @@
 package br.com.businesstec.servicetotvs.mapper;
 
+import br.com.businesstec.model.entities.MarcaEcommerce;
 import br.com.businesstec.servicetotvs.dto.ObjetoTOTVS;
-import br.com.businesstec.servicetotvs.model.entidades.MarcaEcommerce;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

@@ -2,7 +2,7 @@ package br.com.businesstec.servicetotvs.utils;
 
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaSQLResponseDTO;
-import br.com.businesstec.servicetotvs.wsdl.RealizarConsultaSQLResponse;
+import br.com.businesstec.servicetotvs.wsdl.realizarconsulta.RealizarConsultaSQLResponse;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

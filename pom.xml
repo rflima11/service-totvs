@@ -66,6 +66,18 @@
 			<version>${httpclient.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.businesstec</groupId>
+			<artifactId>model</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
 
 
 	</dependencies>
@@ -122,20 +134,34 @@
 				<version>0.14.0</version>
 				<executions>
 					<execution>
+						<id>consultaSql</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/schemas</schemaDirectory>
+							<schemaIncludes>
+								<include>consultaSqlSchema.wsdl</include>
+							</schemaIncludes>
+							<generatePackage>br.com.businesstec.servicetotvs.wsdl.realizarconsulta</generatePackage>
+							<generateDirectory>${project.build.directory}/generated-sources/xjc2</generateDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>dataServer</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/schemas</schemaDirectory>
+							<schemaIncludes>
+								<include>dataServerSchema.wsdl</include>
+							</schemaIncludes>
+							<generatePackage>br.com.businesstec.servicetotvs.wsdl.wsdataserver</generatePackage>
+							<generateDirectory>${project.build.directory}/generated-sources/xjc1</generateDirectory>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generatePackage>br.com.businesstec.servicetotvs.wsdl</generatePackage>
-					<schemas>
-						<schema>
-							<url>http://192.168.204.4:8051/wsConsultaSQL/MEX?wsdl</url>
-						</schema>
-					</schemas>
-				</configuration>
 			</plugin>
 			<!-- end::wsdl[] -->
 		</plugins>

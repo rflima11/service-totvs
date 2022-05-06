@@ -1,11 +1,11 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
+import br.com.businesstec.model.entities.ControleExecucaoFluxo;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaSQLResponseDTO;
 import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
 import br.com.businesstec.servicetotvs.mapper.CategoriaEcommerceMapper;
 import br.com.businesstec.servicetotvs.mapper.CategoriaMapper;
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxo;
 import br.com.businesstec.servicetotvs.service.*;
 import org.springframework.stereotype.Service;
 

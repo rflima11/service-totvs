@@ -1,6 +1,6 @@
 package br.com.businesstec.servicetotvs.events;
 
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxo;
+import br.com.businesstec.model.entities.ControleExecucaoFluxo;
 import org.springframework.context.ApplicationEvent;
 
 public class ControleExecucaoFluxoEvent extends ApplicationEvent {

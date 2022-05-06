@@ -1,7 +1,7 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
-import br.com.businesstec.servicetotvs.model.entidades.ProdutoEcommerce;
-import br.com.businesstec.servicetotvs.repository.ProdutoEcommerceRepository;
+import br.com.businesstec.model.entities.ProdutoEcommerce;
+import br.com.businesstec.model.repository.ProdutoEcommerceRepository;
 import br.com.businesstec.servicetotvs.service.ProdutoEcommerceService;
 import org.springframework.stereotype.Service;
 

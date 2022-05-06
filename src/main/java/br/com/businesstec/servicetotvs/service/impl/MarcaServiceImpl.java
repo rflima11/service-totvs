@@ -1,7 +1,7 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
-import br.com.businesstec.servicetotvs.model.entidades.Marca;
-import br.com.businesstec.servicetotvs.repository.MarcaRepository;
+import br.com.businesstec.model.entities.Marca;
+import br.com.businesstec.model.repository.MarcaRepository;
 import br.com.businesstec.servicetotvs.service.MarcaService;
 import org.springframework.stereotype.Service;
 

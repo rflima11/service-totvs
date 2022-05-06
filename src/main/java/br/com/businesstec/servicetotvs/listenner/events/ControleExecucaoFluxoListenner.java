@@ -4,7 +4,6 @@ import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 import br.com.businesstec.servicetotvs.events.ControleExecucaoFluxoEvent;
 import br.com.businesstec.servicetotvs.factory.ConsultaSimpleFactory;
 import br.com.businesstec.servicetotvs.factory.StrategyFactory;
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxo;
 import br.com.businesstec.servicetotvs.service.ConsultaSqlService;
 import br.com.businesstec.servicetotvs.service.ControleExecucaoFluxoService;
 import org.slf4j.Logger;

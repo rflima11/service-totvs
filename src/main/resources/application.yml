@@ -32,8 +32,13 @@ logging:
 
 
 soap:
-  default-uri: ${SOAP_DEFAULT_URI:http://192.91.254.104:8051/wsConsultaSQL/IwsConsultaSQL}
-  action: ${SOAP_ACTION:http://www.totvs.com/IwsConsultaSQL/RealizarConsultaSQL}
+  default-uri: ${SOAP_DEFAULT_URI:http://192.91.254.104:8051/}
   package-wsdl: ${SOAP_PACKAGE_WSDL:br.com.businesstec.servicetotvs.wsdl}
   username: ${SOAP_USERNAME:integracaoJet}
   password: ${SOAP_PASSWORD:integr@jet#}
+  realizar-consulta:
+    path: ${REALIZAR_CONSULTA_PATH:wsConsultaSQL/IwsConsultaSQL}
+    action: ${SOAP_ACTION_REALIZARCONSULTA:http://www.totvs.com/IwsConsultaSQL/RealizarConsultaSQL}
+  save-record:
+    path: ${REALIZAR_SAVE_RECORD_PATH:wsDataServer/IwsDataServer}
+    action: ${SOAP_ACTION_SAVE_RECORD:http://www.totvs.com/IwsDataServer/SaveRecord}

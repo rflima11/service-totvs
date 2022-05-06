@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class SoapProperties {
 
     private String defaultUri;
+    private SoapWebservices realizarConsulta;
+    private SoapWebservices saveRecord;
     private String action;
     private String packageWsdl;
     private String username;
@@ -21,6 +23,22 @@ public class SoapProperties {
 
     public void setDefaultUri(String defaultUri) {
         this.defaultUri = defaultUri;
+    }
+
+    public SoapWebservices getRealizarConsulta() {
+        return realizarConsulta;
+    }
+
+    public void setRealizarConsulta(SoapWebservices realizarConsulta) {
+        this.realizarConsulta = realizarConsulta;
+    }
+
+    public SoapWebservices getSaveRecord() {
+        return saveRecord;
+    }
+
+    public void setSaveRecord(SoapWebservices saveRecord) {
+        this.saveRecord = saveRecord;
     }
 
     public String getAction() {

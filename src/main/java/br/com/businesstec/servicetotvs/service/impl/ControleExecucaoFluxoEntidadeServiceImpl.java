@@ -1,7 +1,7 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxoEntidade;
-import br.com.businesstec.servicetotvs.repository.ControleExecucaoFluxoEntidadeRepository;
+import br.com.businesstec.model.entities.ControleExecucaoFluxoEntidade;
+import br.com.businesstec.model.repository.ControleExecucaoFluxoEntidadeRepository;
 import br.com.businesstec.servicetotvs.service.ControleExecucaoFluxoEntidadeService;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,9 @@ public class ControleExecucaoFluxoEntidadeServiceImpl implements ControleExecuca
     }
 
     @Override
-    public ControleExecucaoFluxoEntidade registrar(Long idControleExecucaoFluxo, Long idEntidade) {
-       return repository.save(new ControleExecucaoFluxoEntidade(idControleExecucaoFluxo, idEntidade));
+    public void registrar(Long idControleExecucaoFluxo, Long idEntidade) {
+        repository.save(new ControleExecucaoFluxoEntidade(idControleExecucaoFluxo, idEntidade));
+
+
     }
 }

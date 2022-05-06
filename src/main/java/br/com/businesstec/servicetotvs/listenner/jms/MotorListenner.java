@@ -1,13 +1,13 @@
 package br.com.businesstec.servicetotvs.listenner.jms;
 
+import br.com.businesstec.model.entities.ControleExecucaoFluxo;
 import br.com.businesstec.servicetotvs.events.ControleExecucaoFluxoEvent;
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,7 +23,7 @@ public class MotorListenner {
         this.applicationEventPublisher = applicationEventPublisher;
     }
 
-    @JmsListener(destination = "queue.fluxo")
+    @RabbitListener(queues = "queue.Rm")
     public void onMessage(String msg) {
         try {
             var controleExecucaoFluxo = objectMapper.readValue(msg, ControleExecucaoFluxo.class);

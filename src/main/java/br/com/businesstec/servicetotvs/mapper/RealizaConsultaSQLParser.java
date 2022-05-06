@@ -1,8 +1,8 @@
 package br.com.businesstec.servicetotvs.mapper;
 
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
-import br.com.businesstec.servicetotvs.wsdl.ObjectFactory;
-import br.com.businesstec.servicetotvs.wsdl.RealizarConsultaSQL;
+import br.com.businesstec.servicetotvs.wsdl.realizarconsulta.ObjectFactory;
+import br.com.businesstec.servicetotvs.wsdl.realizarconsulta.RealizarConsultaSQL;
 
 public class RealizaConsultaSQLParser {
 

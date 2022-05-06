@@ -21,9 +21,10 @@ public class ConsultaSimpleFactory {
 
         var formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME.ofPattern("yyyyMMdd HH:mm:ss").withZone(ZoneId.systemDefault());
         var horaAtual = dataSinc.atZone(ZoneId.systemDefault());
-//        params.put(EnumParametersSoap.DATASINC_D, formatter.format(horaAtual));
+        params.put(EnumParametersSoap.DATASINC_D, formatter.format(horaAtual));
 
         if (Objects.equals(EntidadeEnum.MARCA_PRODUTO.getValue(), idEntidade)) {
+//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 01, 01, 13, 30, 0)));
 
             return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_MARCAS.getValue(), params);
 
@@ -38,18 +39,22 @@ public class ConsultaSimpleFactory {
             return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_VARIACOES_ITEM.getValue(), params);//id);
 
         } else if (Objects.equals(EntidadeEnum.PRODUTO.getValue(), idEntidade)) {
-            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 01, 01, 8, 30, 0)));
+          //  params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 01, 01, 8, 30, 0)));
 
             return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO.getValue(), params);
         } else if (Objects.equals(EntidadeEnum.CATEGORIA.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 12, 03, 13, 30, 0)));
+//          params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 01, 01, 8, 30, 0)));
 
             return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CATEGORIAS.getValue(), params);
         } else if (Objects.equals(EntidadeEnum.PRODUTO_SKU.getValue(), idEntidade)) {
             params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 01, 01, 8, 30, 0)));
 
             return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO_SKU.getValue(), params);
+        } else if (Objects.equals(EntidadeEnum.CATEGORIA_POR_PRODUTO.getValue(), idEntidade)) {
+            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2021, 01, 01, 8, 30, 0)));
+
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CATEGORIAS_PARA_PRODUTOS.getValue(), params);
         }
-    return null;
+        return null;
     }
 }

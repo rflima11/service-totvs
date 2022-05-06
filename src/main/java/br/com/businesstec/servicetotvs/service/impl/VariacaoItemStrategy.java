@@ -1,11 +1,11 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
+import br.com.businesstec.model.entities.ControleExecucaoFluxo;
+import br.com.businesstec.model.repository.VariacaoItemRepository;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaSQLResponseDTO;
 import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
 import br.com.businesstec.servicetotvs.mapper.VariacaoItemMapper;
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxo;
-import br.com.businesstec.servicetotvs.repository.VariacaoItemRepository;
 import br.com.businesstec.servicetotvs.service.ControleExecucaoFluxoEntidadeService;
 import br.com.businesstec.servicetotvs.service.EntidadeService;
 import br.com.businesstec.servicetotvs.service.EntidadeStrategy;
@@ -46,7 +46,7 @@ public class VariacaoItemStrategy implements EntidadeStrategy {
                     var entidade = entidadeService.salvar(EnumTipoEntidade.MARCA);
                     var variacaoModel = mapper.map(variacaoTotvs);
                     var variacao = variacaoService.encontrarVariacaoPeloIdentificadorOrigem(variacaoModel.getIdentificadorOrigem());
-                    variacaoModel.setIdVariacao(variacao.getId());
+                    //variacaoModel.setIdVariacao(variacao.getId()); CHECAR DEPOIS
                     controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), entidade.getId());
                     return variacaoModel;
                 }).collect(Collectors.toList());

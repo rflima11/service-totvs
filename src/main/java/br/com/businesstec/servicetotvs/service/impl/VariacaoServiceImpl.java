@@ -1,14 +1,14 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
+import br.com.businesstec.model.entities.ControleExecucaoFluxo;
+import br.com.businesstec.model.entities.Variacao;
+import br.com.businesstec.model.repository.VariacaoItemRepository;
+import br.com.businesstec.model.repository.VariacaoRepository;
 import br.com.businesstec.servicetotvs.enums.EntidadeEnum;
 import br.com.businesstec.servicetotvs.dto.ObjetoTOTVS;
 import br.com.businesstec.servicetotvs.enums.EnumParametersSoap;
 import br.com.businesstec.servicetotvs.factory.ConsultaSimpleFactory;
 import br.com.businesstec.servicetotvs.mapper.VariacaoItemMapper;
-import br.com.businesstec.servicetotvs.model.ControleExecucaoFluxo;
-import br.com.businesstec.servicetotvs.model.entidades.Variacao;
-import br.com.businesstec.servicetotvs.repository.VariacaoItemRepository;
-import br.com.businesstec.servicetotvs.repository.VariacaoRepository;
 import br.com.businesstec.servicetotvs.service.ConsultaSqlService;
 import br.com.businesstec.servicetotvs.service.VariacaoService;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class VariacaoServiceImpl implements VariacaoService {
     }
 
     @Override
-    public Variacao encontrarVariacaoPeloIdentificadorOrigem(String identificadorOrigem) {
+    public List<Variacao> encontrarVariacaoPeloIdentificadorOrigem(String identificadorOrigem) {
         return variacaoRepository.findByIdentificadorOrigem(identificadorOrigem);
     }
 

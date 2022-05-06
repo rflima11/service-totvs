@@ -1,6 +1,6 @@
 package br.com.businesstec.servicetotvs.service;
 
-import br.com.businesstec.servicetotvs.model.entidades.ProdutoEcommerce;
+import br.com.businesstec.model.entities.ProdutoEcommerce;
 
 public interface ProdutoEcommerceService {
 

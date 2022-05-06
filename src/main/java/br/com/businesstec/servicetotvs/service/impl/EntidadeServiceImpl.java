@@ -1,8 +1,8 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
+import br.com.businesstec.model.entities.Entidade;
+import br.com.businesstec.model.repository.EntidadeRepository;
 import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
-import br.com.businesstec.servicetotvs.model.entidades.Entidade;
-import br.com.businesstec.servicetotvs.repository.EntidadeRepository;
 import br.com.businesstec.servicetotvs.service.EntidadeService;
 import org.springframework.stereotype.Service;
 
