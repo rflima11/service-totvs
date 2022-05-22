@@ -33,14 +33,12 @@ public class CategoriaStrategy implements EntidadeStrategy {
         var categorias = realizarConsultaSQLResponseDTO.getResultados();
 
         categorias.stream().forEach(categoriaTotvs -> {
-            var entidade = entidadeService.salvar(EnumTipoEntidade.CATEGORIA);
             var categoriaEcommerceModel = categoriaEcommerceMapper.map(categoriaTotvs);
             var categoriaModel = categoriaMapper.map(categoriaTotvs);
-            categoriaModel.setIdEntidade(entidade.getId());
             var categoria = categoriaService.salvar(categoriaModel);
             categoriaEcommerceModel.setIdCategoria(categoria.getId());
             categoriaEcommerceService.salvar(categoriaEcommerceModel);
-            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), entidade.getId());
+            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), categoria.getIdEntidade());
         });
     }
 

@@ -3,7 +3,6 @@ package br.com.businesstec.servicetotvs.service.impl;
 import br.com.businesstec.model.entities.ControleExecucaoFluxo;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaSQLResponseDTO;
 import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
-import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
 import br.com.businesstec.servicetotvs.mapper.ProdutoEcommerceMapper;
 import br.com.businesstec.servicetotvs.mapper.ProdutoMapper;
 import br.com.businesstec.servicetotvs.service.*;
@@ -20,14 +19,16 @@ public class ProdutoStrategy implements EntidadeStrategy {
     private final ProdutoSkuService produtoSkuService;
     private final ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService;
     private final CategoriaEcommerceService categoriaEcommerceService;
+    private final ProdutoCategoriaService produtoCategoriaService;
 
-    public ProdutoStrategy(EntidadeService entidadeService, ProdutoService produtoService, ProdutoEcommerceService produtoEcommerceService, ProdutoSkuService produtoSkuService, ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService, CategoriaEcommerceService categoriaEcommerceService) {
+    public ProdutoStrategy(EntidadeService entidadeService, ProdutoService produtoService, ProdutoEcommerceService produtoEcommerceService, ProdutoSkuService produtoSkuService, ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService, CategoriaEcommerceService categoriaEcommerceService, ProdutoCategoriaService produtoCategoriaService) {
         this.entidadeService = entidadeService;
         this.produtoService = produtoService;
         this.produtoEcommerceService = produtoEcommerceService;
         this.produtoSkuService = produtoSkuService;
         this.controleExecucaoFluxoEntidadeService = controleExecucaoFluxoEntidadeService;
         this.categoriaEcommerceService = categoriaEcommerceService;
+        this.produtoCategoriaService = produtoCategoriaService;
         produtoMapper = ProdutoMapper.INSTANCE;
         produtoEcommerceMapper = ProdutoEcommerceMapper.INSTANCE;
     }
@@ -42,9 +43,10 @@ public class ProdutoStrategy implements EntidadeStrategy {
             var produtoEcommerce = produtoEcommerceMapper.map(p);
             produtoEcommerce.setIdProduto(produto.getId());
             controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), produtoSalvo.getIdEntidade());
-            categoriaEcommerceService.salvarCategoriasEcommerceByIdProduto(controleExecucaoFluxo, produto.getIdentificadorOrigem());
+            produtoCategoriaService.buscarCategoriasPorProdutos(controleExecucaoFluxo, produtoSalvo.getIdentificadorOrigem());
             produtoEcommerceService.salvar(produtoEcommerce);
-            produtoSkuService.salvarProdutosSkuByIdProduto(controleExecucaoFluxo, produto.getIdentificadorOrigem());
+
+//          produtoSkuService.salvarProdutosSkuByIdProduto(controleExecucaoFluxo, produto.getIdentificadorOrigem());
         });
 
     }

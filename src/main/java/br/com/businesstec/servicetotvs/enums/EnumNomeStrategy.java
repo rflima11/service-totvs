@@ -8,7 +8,8 @@ public enum EnumNomeStrategy {
     MARCA_STRATEGY(2L),
     CATEGORIA_STRATEGY(3L),
     VARIACAO_STRATEGY(4L),
-    LISTA_VARIACAO_STRATEGY(5L);
+    LISTA_VARIACAO_STRATEGY(6L),
+    SKU_STRATEGY(5L);
 
     Long value;
 

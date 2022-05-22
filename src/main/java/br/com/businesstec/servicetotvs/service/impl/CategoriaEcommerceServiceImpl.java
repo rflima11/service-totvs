@@ -33,7 +33,7 @@ public class CategoriaEcommerceServiceImpl implements CategoriaEcommerceService 
            var categoriaSalva =  categoriaOptional.get();
             categoriaEcommerce.setId(categoriaSalva.getId());
         }
-        categoriaEcommerce.setId(null);
+
         return categoriaEcommerceRepository.save(categoriaEcommerce);
     }
 

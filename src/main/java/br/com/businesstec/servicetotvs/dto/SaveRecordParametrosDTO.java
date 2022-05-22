@@ -1,14 +1,38 @@
 package br.com.businesstec.servicetotvs.dto;
 
+import br.com.businesstec.servicetotvs.utils.CDATAAdapter;
+import com.sun.xml.txw2.annotation.XmlCDATA;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+
+@XmlRootElement(name = "![CDATA[<FinCFOBR ")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SaveRecordParametrosDTO {
 
-    private String nomeFantasia;
+    @XmlElement(name = "FCFO")
+    private ParametrosCliente parametros;
 
-    public String getNomeFantasia() {
-        return nomeFantasia;
+    @XmlElement(name = "FCFOCOMPL")
+    private ParametrosClienteComplementares parametrosComplementares;
+
+    public ParametrosCliente getParametrosCliente() {
+        return parametros;
     }
 
-    public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
+    public void setParametrosCliente(ParametrosCliente parametrosCliente) {
+        this.parametros = parametrosCliente;
+    }
+
+    public ParametrosClienteComplementares getParametrosComplementares() {
+        return parametrosComplementares;
+    }
+
+    public void setParametrosComplementares(ParametrosClienteComplementares parametrosComplementares) {
+        this.parametrosComplementares = parametrosComplementares;
     }
 }

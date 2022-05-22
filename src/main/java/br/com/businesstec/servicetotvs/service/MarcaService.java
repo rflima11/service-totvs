@@ -4,7 +4,7 @@ import br.com.businesstec.model.entities.Marca;
 
 public interface MarcaService {
 
-    Marca salvar(Long idEntidade, String identificadorOrigem, String descricao);
+    Marca salvar(Marca marca);
 
     boolean isMarcaSalva(Long id);
 }

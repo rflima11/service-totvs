@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class VariacaoServiceImpl implements VariacaoService {
@@ -32,7 +33,7 @@ public class VariacaoServiceImpl implements VariacaoService {
     }
 
     @Override
-    public List<Variacao> encontrarVariacaoPeloIdentificadorOrigem(String identificadorOrigem) {
+    public Optional<Variacao> encontrarVariacaoPeloIdentificadorOrigem(String identificadorOrigem) {
         return variacaoRepository.findByIdentificadorOrigem(identificadorOrigem);
     }
 
@@ -57,7 +58,7 @@ public class VariacaoServiceImpl implements VariacaoService {
 
                 if (variacaoItemRepository.existsByIdentificadorOrigem(variacaoTotvs.getExternalId())) {
                    var variacaoItem = variacaoItemRepository.findByIdentificadorOrigem(variacaoTotvs.getExternalId());
-                   variacaoItemModel.setId(variacaoItem.getId());
+                   variacaoItemModel.setId(variacaoItem.get().getId());
                 }
                 variacaoItemModel.setIdVariacao(idVariacao);
                 variacaoItemRepository.save(variacaoItemModel);

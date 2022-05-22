@@ -10,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 public class MarcaStrategy implements EntidadeStrategy {
 
@@ -34,10 +37,10 @@ public class MarcaStrategy implements EntidadeStrategy {
         var marcas = realizarConsultaSQLResponseDTO.getResultados();
 
         marcas.stream().forEach(marcaTotvs -> {
-            var entidade = entidadeService.salvar(EnumTipoEntidade.MARCA);
-            var marca = marcaService.salvar(entidade.getId(), marcaTotvs.getExternalId(), marcaTotvs.getName());
+            var marcaEntity = marcaMapper.mapEntity(marcaTotvs);
+            var marca = marcaService.salvar(marcaEntity);
             var marcaModel = marcaMapper.map(marcaTotvs);
-            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), entidade.getId());
+            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), marca.getIdEntidade());
             marcaModel.setIdMarca(marca.getId());
             marcaEcommerceService.salvar(marcaModel);
         });
@@ -51,5 +54,12 @@ public class MarcaStrategy implements EntidadeStrategy {
     @Override
     public EnumNomeStrategy getNomeStrategy() {
         return EnumNomeStrategy.MARCA_STRATEGY;
+    }
+
+    public static void main(String[] args) {
+        Date date = new Date();
+        SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy");
+        String stringDate= DateFor.format(date);
+        System.out.println(stringDate);
     }
 }

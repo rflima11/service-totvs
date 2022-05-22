@@ -7,6 +7,9 @@ import br.com.businesstec.servicetotvs.service.EntidadeService;
 import br.com.businesstec.servicetotvs.service.ProdutoService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProdutoServiceImpl implements ProdutoService {
 
@@ -25,7 +28,7 @@ public class ProdutoServiceImpl implements ProdutoService {
         if (produtoOptional.isPresent()) {
             var produtoSalvo = produtoOptional.get();
             produto.setId(produtoSalvo.getId());
-            produto.setIdEntidade(produtoOptional.get().getIdEntidade());
+            produto.setIdEntidade(produtoSalvo.getIdEntidade());
         } else {
             var entidade = entidadeService.salvar(EnumTipoEntidade.PRODUTO);
             produto.setIdEntidade(entidade.getId());
@@ -36,6 +39,11 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Override
     public Produto findByIdentificadorOrigem(String identificadorOrigem) {
         return produtoRepository.findByIdentificadorOrigem(identificadorOrigem).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+    }
+
+    @Override
+    public List<String> encontrarTodosIdentificadoresOrigem() {
+        return produtoRepository.findAll().stream().map(Produto::getIdentificadorOrigem).collect(Collectors.toList());
     }
 
 

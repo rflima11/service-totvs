@@ -2,6 +2,8 @@ package br.com.businesstec.servicetotvs.service.impl;
 
 import br.com.businesstec.model.entities.Marca;
 import br.com.businesstec.model.repository.MarcaRepository;
+import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
+import br.com.businesstec.servicetotvs.service.EntidadeService;
 import br.com.businesstec.servicetotvs.service.MarcaService;
 import org.springframework.stereotype.Service;
 
@@ -9,18 +11,23 @@ import org.springframework.stereotype.Service;
 public class MarcaServiceImpl implements MarcaService {
 
     private final MarcaRepository marcaRepository;
+    private final EntidadeService entidadeService;
 
-    public MarcaServiceImpl(MarcaRepository marcaRepository) {
+    public MarcaServiceImpl(MarcaRepository marcaRepository, EntidadeService entidadeService) {
         this.marcaRepository = marcaRepository;
+        this.entidadeService = entidadeService;
     }
 
     @Override
-    public Marca salvar(Long idEntidade, String identificadorOrigem, String descricao) {
-        var optionalMarca = marcaRepository.findByIdentificadorOrigem(identificadorOrigem);
-        var marca = new Marca(idEntidade, identificadorOrigem, descricao);
+    public Marca salvar(Marca marca) {
+        var optionalMarca = marcaRepository.findByIdentificadorOrigem(marca.getIdentificadorOrigem());
         if (optionalMarca.isPresent()) {
             var marcaSalva = optionalMarca.get();
             marca.setId(marcaSalva.getId());
+            marca.setIdEntidade(marcaSalva.getIdEntidade());
+        } else {
+            var entidade = entidadeService.salvar(EnumTipoEntidade.MARCA);
+            marca.setIdEntidade(entidade.getId());
         }
         return marcaRepository.save(marca);
     }

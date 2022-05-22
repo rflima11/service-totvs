@@ -21,6 +21,7 @@ public class RealizarConsultaSQLSoap {
     }
 
     public RealizarConsultaSQLResponse realizarConsulta(RealizarConsultaParametrosDTO parametrosDTO) {
+        
         var request =  RealizaConsultaSQLParser.getRequestRealizarConsultaSQL(parametrosDTO);
         return (RealizarConsultaSQLResponse) webServiceTemplate.marshalSendAndReceive(webServiceTemplate.getDefaultUri(),
                 request, new SoapActionCallback(soapProperties.getRealizarConsulta().getAction()));

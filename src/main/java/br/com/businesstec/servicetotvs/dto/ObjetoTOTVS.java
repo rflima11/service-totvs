@@ -28,12 +28,20 @@ public class ObjetoTOTVS {
     private String idVariacao;
     @XmlElement(name = "ID_PRODUTO")
     private Long idProduto;
+    @XmlElement(name = "ID_PRODUTO_SKU")
+    private Long idProdutoSku;
+    @XmlElement(name = "ID_VARIACAO_ITEM")
+    private String idVariacaoItem;
     @XmlElement(name = "ULTIMA_ATUALIZACAO")
     private String ultimaAtualizacao;
     @XmlElement(name = "CODIGO")
     private String codigo;
     @XmlElement(name = "PADRAO")
     private int padrao;
+    @XmlElement(name = "IDPRD")
+    private Long idProdutoCategoria;
+    @XmlElement(name = "IDCAT")
+    private Long idCategoriaProduto;
     @XmlElement(name = "DESCRICAO")
     private String descricao;
     @XmlElement(name = "DESCRICAO_RESUMIDA")
@@ -321,5 +329,37 @@ public class ObjetoTOTVS {
 
     public void setVisivel(int visivel) {
         this.visivel = visivel;
+    }
+
+    public Long getIdProdutoSku() {
+        return idProdutoSku;
+    }
+
+    public void setIdProdutoSku(Long idProdutoSku) {
+        this.idProdutoSku = idProdutoSku;
+    }
+
+    public String getIdVariacaoItem() {
+        return idVariacaoItem;
+    }
+
+    public void setIdVariacaoItem(String idVariacaoItem) {
+        this.idVariacaoItem = idVariacaoItem;
+    }
+
+    public Long getIdProdutoCategoria() {
+        return idProdutoCategoria;
+    }
+
+    public void setIdProdutoCategoria(Long idProdutoCategoria) {
+        this.idProdutoCategoria = idProdutoCategoria;
+    }
+
+    public Long getIdCategoriaProduto() {
+        return idCategoriaProduto;
+    }
+
+    public void setIdCategoriaProduto(Long idCategoriaProduto) {
+        this.idCategoriaProduto = idCategoriaProduto;
     }
 }

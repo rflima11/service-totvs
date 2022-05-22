@@ -7,8 +7,9 @@ public enum EntidadeEnum {
     CATEGORIA(3L),
     VARIACOES(4L),
     CATEGORIA_POR_PRODUTO(9L),
-    VARIACOES_ITEM(5L),
-    PRODUTO_SKU(6L);
+    VARIACOES_ITEM(99L),
+    PRODUTO_SKU(5L),
+    PRODUTO_SKU_VARIACOES(7L);
 
     EntidadeEnum(long value) {
         this.value = value;

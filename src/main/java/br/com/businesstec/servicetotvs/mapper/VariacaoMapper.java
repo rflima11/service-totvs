@@ -11,7 +11,7 @@ public interface VariacaoMapper {
 
     VariacaoMapper INSTANCE = Mappers.getMapper(VariacaoMapper.class);
 
-    @Mapping(source = "referenceType", target = "descricao")
+    @Mapping(source = "name", target = "descricao")
     @Mapping(source = "externalId", target = "identificadorOrigem")
     Variacao map(ObjetoTOTVS dto);
 

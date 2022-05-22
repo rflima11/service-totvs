@@ -13,7 +13,7 @@ artemis:
   queue:
     fluxo: queue.fluxo
 server:
-  port: 8083
+  port: 8086
 
 logging:
   level:

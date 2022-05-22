@@ -4,7 +4,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
 public class JetListenner {
 
-    @RabbitListener(queues = "queue.Pedidos")
+    @RabbitListener(queues = "queue.Clientes")
     public void onMessage(String msg) {
         System.out.println(msg);
     }

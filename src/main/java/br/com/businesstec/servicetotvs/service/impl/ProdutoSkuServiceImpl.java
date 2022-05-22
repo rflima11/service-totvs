@@ -8,10 +8,7 @@ import br.com.businesstec.servicetotvs.enums.EnumParametersSoap;
 import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
 import br.com.businesstec.servicetotvs.factory.ConsultaSimpleFactory;
 import br.com.businesstec.servicetotvs.mapper.ProdutoSkuMapper;
-import br.com.businesstec.servicetotvs.service.ConsultaSqlService;
-import br.com.businesstec.servicetotvs.service.EntidadeService;
-import br.com.businesstec.servicetotvs.service.ProdutoService;
-import br.com.businesstec.servicetotvs.service.ProdutoSkuService;
+import br.com.businesstec.servicetotvs.service.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -24,12 +21,17 @@ public class ProdutoSkuServiceImpl implements ProdutoSkuService {
     private final EntidadeService entidadeService;
     private final ConsultaSqlService consultaSqlService;
     private final ProdutoSkuMapper mapper;
+    private final VariacaoProdutoSkuService variacaoProdutoSkuService;
+    private final ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService;
 
-    public ProdutoSkuServiceImpl(ProdutoSkuRepository produtoSkuRepository, ProdutoService produtoService, EntidadeService entidadeService, ConsultaSqlService consultaSqlService) {
+
+    public ProdutoSkuServiceImpl(ProdutoSkuRepository produtoSkuRepository, ProdutoService produtoService, EntidadeService entidadeService, ConsultaSqlService consultaSqlService, VariacaoProdutoSkuService variacaoProdutoSkuService, ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService) {
         this.produtoSkuRepository = produtoSkuRepository;
         this.produtoService = produtoService;
         this.entidadeService = entidadeService;
         this.consultaSqlService = consultaSqlService;
+        this.variacaoProdutoSkuService = variacaoProdutoSkuService;
+        this.controleExecucaoFluxoEntidadeService = controleExecucaoFluxoEntidadeService;
         this.mapper = ProdutoSkuMapper.INSTANCE;
     }
 
@@ -45,22 +47,27 @@ public class ProdutoSkuServiceImpl implements ProdutoSkuService {
                 var produtoSku = mapper.map(resultado);
                 produtoSku.setIdProduto(produtoService.findByIdentificadorOrigem(idProduto).getId());
                 produtoSku.setIdentificadorOrigem(String.valueOf(resultado.getId()));
-                this.salvar(produtoSku);
+                produtoSku.setIdentificadorOrigemProduto(idProduto);
+                var produtoSkuSalvo = this.salvar(produtoSku);
+                variacaoProdutoSkuService.salvarVariacaoProdutoSku(controleExecucaoFluxo, Long.valueOf(produtoSkuSalvo.getIdentificadorOrigem()));
+                controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), produtoSkuSalvo.getIdEntidade());
             });
         }
 
     }
 
-    private ProdutoSku salvar(ProdutoSku produtoSku) {
+    @Override
+    public ProdutoSku salvar(ProdutoSku produtoSku) {
         var optionalProdutoSku = produtoSkuRepository.findByIdentificadorOrigem(produtoSku.getIdentificadorOrigem());
 
         if (optionalProdutoSku.isPresent()) {
             var produtoSkuSalvo = optionalProdutoSku.get();
             produtoSku.setId(produtoSkuSalvo.getId());
+            produtoSku.setIdEntidade(produtoSkuSalvo.getIdEntidade());
         } else {
             produtoSku.setId(null);
+            produtoSku.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.PRODUTO_SKU).getId());
         }
-        produtoSku.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.PRODUTO_SKU).getId());
         return produtoSkuRepository.save(produtoSku);
     }
 }

@@ -2,19 +2,20 @@ package br.com.businesstec.servicetotvs.enums;
 
 public enum EnumTipoEntidade {
 
-    PRODUTO(1),
-    MARCA(2),
-    CATEGORIA(3),
-    VARIACAO(4),
-    PRODUTO_SKU(5);
+    PRODUTO(1L),
+    MARCA(2L),
+    CATEGORIA(3L),
+    VARIACAO(4L),
+    PRODUTO_SKU(5L),
+    PRODUTO_SKU_VARIACO(6L);
 
-    private Integer value;
+    private Long value;
 
-    EnumTipoEntidade(Integer value) {
+    EnumTipoEntidade(Long value) {
         this.value = value;
     }
 
-    public Integer getValue() {
+    public Long getValue() {
         return value;
     }
 }
