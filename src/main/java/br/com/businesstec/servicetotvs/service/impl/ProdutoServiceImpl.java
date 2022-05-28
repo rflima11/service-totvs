@@ -19,6 +19,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     public ProdutoServiceImpl(ProdutoRepository produtoRepository, EntidadeService entidadeService) {
         this.produtoRepository = produtoRepository;
         this.entidadeService = entidadeService;
+
     }
 
     @Override

@@ -43,7 +43,6 @@ public class VariacoesStrategy implements EntidadeStrategy {
             if (!variacaoService.isVariacaoSalva(variacaoTotvs)) {
                 var entidade = entidadeService.salvar(EnumTipoEntidade.VARIACAO);
                 variacaoModel.setIdEntidade(entidade.getId());
-                controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), entidade.getId());
             } else {
                 var variacaoSalva = variacaoRepository.findByIdentificadorOrigem(variacaoTotvs.getExternalId());
                 if (variacaoSalva.isPresent()) {
@@ -53,6 +52,7 @@ public class VariacoesStrategy implements EntidadeStrategy {
 
             }
             var variacao = variacaoRepository.save(variacaoModel);
+            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), variacao.getIdEntidade());
             variacaoService.salvarVariacoesItem(controleExecucaoFluxo, variacaoTotvs.getExternalId(), variacao.getId());
 
         });

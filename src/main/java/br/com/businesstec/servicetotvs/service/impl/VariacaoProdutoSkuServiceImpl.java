@@ -5,12 +5,14 @@ import br.com.businesstec.model.entities.VariacaoProdutoSku;
 import br.com.businesstec.model.repository.VariacaoProdutoSkuRepository;
 import br.com.businesstec.servicetotvs.enums.EntidadeEnum;
 import br.com.businesstec.servicetotvs.enums.EnumParametersSoap;
-import br.com.businesstec.servicetotvs.enums.EnumTipoEntidade;
 import br.com.businesstec.servicetotvs.factory.ConsultaSimpleFactory;
 import br.com.businesstec.servicetotvs.mapper.VariacaoSkuProdutoMapper;
 import br.com.businesstec.servicetotvs.service.ConsultaSqlService;
 import br.com.businesstec.servicetotvs.service.VariacaoProdutoSkuService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VariacaoProdutoSkuServiceImpl implements VariacaoProdutoSkuService {
@@ -26,10 +28,15 @@ public class VariacaoProdutoSkuServiceImpl implements VariacaoProdutoSkuService 
     }
 
     private VariacaoProdutoSku save(VariacaoProdutoSku variacaoProdutoSku) {
-        var optionalVariacaoProduto = repository.findByIdProdutoSku(variacaoProdutoSku.getIdProdutoSku());
-        if (optionalVariacaoProduto.isPresent()) {
-            var variacaoSalva = optionalVariacaoProduto.get();
-            variacaoProdutoSku.setId(variacaoSalva.getId());
+        var variacoesPrdSku = repository.findByIdProdutoSku(variacaoProdutoSku.getIdProdutoSku());
+        if (!variacoesPrdSku.isEmpty()) {
+            var variacao = variacoesPrdSku.stream().filter(v -> {
+                return v.getIdVariacaoItem().equals(variacaoProdutoSku.getIdVariacaoItem());
+            }).findFirst();
+
+            if (variacao.isPresent()) {
+                variacaoProdutoSku.setId(variacao.get().getId());
+            }
         }
         return repository.save(variacaoProdutoSku);
     }
@@ -48,7 +55,7 @@ public class VariacaoProdutoSkuServiceImpl implements VariacaoProdutoSkuService 
     }
 
 
-    private VariacaoProdutoSku recuperarVariacaoSkuById(Long idProdutoSku) {
-        return repository.findByIdProdutoSku(idProdutoSku).orElseThrow(() -> new RuntimeException("Variação não encontrada"));
+    private List<VariacaoProdutoSku> recuperarVariacaoSkuById(Long idProdutoSku) {
+        return repository.findByIdProdutoSku(idProdutoSku);
     }
 }

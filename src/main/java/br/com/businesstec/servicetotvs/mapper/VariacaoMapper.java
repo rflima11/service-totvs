@@ -13,6 +13,7 @@ public interface VariacaoMapper {
 
     @Mapping(source = "name", target = "descricao")
     @Mapping(source = "externalId", target = "identificadorOrigem")
+    @Mapping(source = "referenceType", target = "tipoReferencia")
     Variacao map(ObjetoTOTVS dto);
 
 }

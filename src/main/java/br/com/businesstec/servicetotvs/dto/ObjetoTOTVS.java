@@ -12,6 +12,8 @@ public class ObjetoTOTVS {
 
     @XmlElement(name = "ID")
     private Long id;
+    @XmlElement(name = "ID_MARCA")
+    private Long idMarca;
     @XmlElement(name = "NAME")
     private String name;
     @XmlElement(name = "FEATURED")
@@ -46,6 +48,8 @@ public class ObjetoTOTVS {
     private String descricao;
     @XmlElement(name = "DESCRICAO_RESUMIDA")
     private String descricaoResumida;
+    @XmlElement(name = "DESCRICAO_COMPLETA")
+    private String descricaoCompleta;
     @XmlElement(name = "ESTOQUE")
     private Double estoque;
     @XmlElement(name = "PRECO")
@@ -361,5 +365,21 @@ public class ObjetoTOTVS {
 
     public void setIdCategoriaProduto(Long idCategoriaProduto) {
         this.idCategoriaProduto = idCategoriaProduto;
+    }
+
+    public String getDescricaoCompleta() {
+        return descricaoCompleta;
+    }
+
+    public void setDescricaoCompleta(String descricaoCompleta) {
+        this.descricaoCompleta = descricaoCompleta;
+    }
+
+    public Long getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(Long idMarca) {
+        this.idMarca = idMarca;
     }
 }
