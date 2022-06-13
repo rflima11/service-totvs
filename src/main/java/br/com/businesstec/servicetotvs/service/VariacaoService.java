@@ -9,6 +9,8 @@ import java.util.Optional;
 
 public interface VariacaoService {
 
+    Variacao salvar(Variacao variacao);
+
     Optional<Variacao> encontrarVariacaoPeloIdentificadorOrigem(String identificadorOrigem);
 
     List<Variacao> encontrarTodasVariacoes();

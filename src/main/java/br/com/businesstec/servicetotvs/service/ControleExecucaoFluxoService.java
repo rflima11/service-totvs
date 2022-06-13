@@ -7,4 +7,6 @@ public interface ControleExecucaoFluxoService {
     Long recuperarTipoEntidade(ControleExecucaoFluxo controleExecucaoFluxo);
 
     void atualizarHora(ControleExecucaoFluxo controleExecucaoFluxo);
+
+    ControleExecucaoFluxo encontrarPeloId(Long idControleExecucaoFluxo);
 }

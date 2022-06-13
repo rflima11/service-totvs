@@ -20,15 +20,7 @@ public class MarcaServiceImpl implements MarcaService {
 
     @Override
     public Marca salvar(Marca marca) {
-        var optionalMarca = marcaRepository.findByIdentificadorOrigem(marca.getIdentificadorOrigem());
-        if (optionalMarca.isPresent()) {
-            var marcaSalva = optionalMarca.get();
-            marca.setId(marcaSalva.getId());
-            marca.setIdEntidade(marcaSalva.getIdEntidade());
-        } else {
-            var entidade = entidadeService.salvar(EnumTipoEntidade.MARCA);
-            marca.setIdEntidade(entidade.getId());
-        }
+        marca.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.MARCA).getId());
         return marcaRepository.save(marca);
     }
 

@@ -9,7 +9,13 @@ public enum EntidadeEnum {
     CATEGORIA_POR_PRODUTO(9L),
     VARIACOES_ITEM(99L),
     PRODUTO_SKU(5L),
-    PRODUTO_SKU_VARIACOES(7L);
+    PRODUTO_SKU_VARIACOES(7L),
+    IMAGEM_PRODUTO(8L),
+    PRECO_PRODUTO(6L),
+    CLIENTE(11L),
+    COD_MUNICIPIO(88L),
+    ESTOQUE_PRODUTO(7L);
+
 
     EntidadeEnum(long value) {
         this.value = value;

@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ControleExecucaoFluxoServiceImpl implements ControleExecucaoFluxoService {
 
-    private final ControleExecucaoFluxoRepository controleExecucaoFluxoTentativaRepository;
+    private final ControleExecucaoFluxoRepository controleExecucaoFluxoRepository;
     private final ControleFluxoRepository controleFluxoRepository;
 
     public ControleExecucaoFluxoServiceImpl(ControleExecucaoFluxoRepository controleExecucaoFluxoTentativaRepository, ControleFluxoRepository controleFluxoRepository) {
-        this.controleExecucaoFluxoTentativaRepository = controleExecucaoFluxoTentativaRepository;
+        this.controleExecucaoFluxoRepository = controleExecucaoFluxoTentativaRepository;
         this.controleFluxoRepository = controleFluxoRepository;
     }
 
@@ -31,6 +31,11 @@ public class ControleExecucaoFluxoServiceImpl implements ControleExecucaoFluxoSe
     @Override
     public void atualizarHora(ControleExecucaoFluxo controleExecucaoFluxo) {
         controleExecucaoFluxo.atualizarHora();
-        controleExecucaoFluxoTentativaRepository.save(controleExecucaoFluxo);
+        controleExecucaoFluxoRepository.save(controleExecucaoFluxo);
+    }
+
+    @Override
+    public ControleExecucaoFluxo encontrarPeloId(Long idControleExecucaoFluxo) {
+        return controleExecucaoFluxoRepository.findById(idControleExecucaoFluxo).orElseThrow(() -> new RuntimeException("Não encontrado controle execucao fluxo com o ID: " + idControleExecucaoFluxo));
     }
 }

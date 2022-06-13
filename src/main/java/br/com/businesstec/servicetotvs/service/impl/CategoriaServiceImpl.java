@@ -32,15 +32,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public Categoria salvar(Categoria categoria) {
-        var categoriaOpcional = categoriaRepository.findByIdentificadorOrigem(categoria.getIdentificadorOrigem());
-        if (categoriaOpcional.isPresent()) {
-            var categoriaSalva = categoriaOpcional.get();
-            categoria.setId(categoriaSalva.getId());
-            categoria.setIdEntidade(categoriaSalva.getIdEntidade());
-        } else {
-            var entidade = entidadeService.salvar(EnumTipoEntidade.CATEGORIA);
-            categoria.setIdEntidade(entidade.getId());
-        }
+        categoria.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.CATEGORIA).getId());
         return categoriaRepository.save(categoria);
     }
 

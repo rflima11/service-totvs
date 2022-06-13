@@ -22,7 +22,18 @@ public class ControleExecucaoFluxoEntidadeServiceImpl implements ControleExecuca
             controleExecucaoFluxoEntidade.setId(optControleExecucaoFluxo.get().getId());
         }
         repository.save(controleExecucaoFluxoEntidade);
-
-
     }
+
+    @Override
+    public ControleExecucaoFluxoEntidade atualizarIntegracao(ControleExecucaoFluxoEntidade controleExecucaoFluxoEntidade) {
+        controleExecucaoFluxoEntidade.setIntegrado(true);
+        return repository.save(controleExecucaoFluxoEntidade);
+    }
+
+    @Override
+    public ControleExecucaoFluxoEntidade atualizarIntegracaoErro(ControleExecucaoFluxoEntidade controleExecucaoFluxoEntidade) {
+        controleExecucaoFluxoEntidade.setIntegrado(false);
+        return repository.save(controleExecucaoFluxoEntidade);    }
+
+
 }

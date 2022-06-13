@@ -33,16 +33,16 @@ public class MarcaStrategy implements EntidadeStrategy {
     }
 
     @Override
-    public void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
+    public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var marcas = realizarConsultaSQLResponseDTO.getResultados();
 
         marcas.stream().forEach(marcaTotvs -> {
             var marcaEntity = marcaMapper.mapEntity(marcaTotvs);
             var marca = marcaService.salvar(marcaEntity);
             var marcaModel = marcaMapper.map(marcaTotvs);
-            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), marca.getIdEntidade());
             marcaModel.setIdMarca(marca.getId());
             marcaEcommerceService.salvar(marcaModel);
+            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), marca.getIdEntidade());
         });
 
         logger.info("=======================================================================");
@@ -56,10 +56,4 @@ public class MarcaStrategy implements EntidadeStrategy {
         return EnumNomeStrategy.MARCA_STRATEGY;
     }
 
-    public static void main(String[] args) {
-        Date date = new Date();
-        SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy");
-        String stringDate= DateFor.format(date);
-        System.out.println(stringDate);
-    }
 }

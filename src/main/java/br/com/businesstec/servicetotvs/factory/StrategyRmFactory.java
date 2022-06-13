@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.Set;
 
 @Component
-public class StrategyFactory {
+public class StrategyRmFactory {
 
     private Map<EnumNomeStrategy, EntidadeStrategy> strategies;
 
     @Autowired
-    public StrategyFactory(Set<EntidadeStrategy> strategySet) {
+    public StrategyRmFactory(Set<EntidadeStrategy> strategySet) {
         createStrategy(strategySet);
     }
 

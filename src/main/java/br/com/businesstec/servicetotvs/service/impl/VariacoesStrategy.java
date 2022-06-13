@@ -1,6 +1,7 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
 import br.com.businesstec.model.entities.ControleExecucaoFluxo;
+import br.com.businesstec.model.entities.Variacao;
 import br.com.businesstec.model.repository.VariacaoRepository;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaSQLResponseDTO;
 import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
@@ -16,53 +17,34 @@ public class VariacoesStrategy implements EntidadeStrategy {
 
     private static final Logger logger = LoggerFactory.getLogger(VariacoesStrategy.class);
 
-    private final VariacaoRepository variacaoRepository;
     private final ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService;
     private final VariacaoService variacaoService;
-    private final EntidadeService entidadeService;
     private final VariacaoMapper variacaoMapper;
 
-    public VariacoesStrategy(VariacaoRepository variacaoRepository,
-                             ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService,
-                             VariacaoService variacaoService,
-                             EntidadeService entidadeService) {
-        this.variacaoRepository = variacaoRepository;
+    public VariacoesStrategy(ControleExecucaoFluxoEntidadeService controleExecucaoFluxoEntidadeService,
+                             VariacaoService variacaoService) {
         this.controleExecucaoFluxoEntidadeService = controleExecucaoFluxoEntidadeService;
         this.variacaoService = variacaoService;
-        this.entidadeService = entidadeService;
         this.variacaoMapper = VariacaoMapper.INSTANCE;
     }
 
     @Override
-    public void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
+    public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var variacoes = realizarConsultaSQLResponseDTO.getResultados();
 
         variacoes.stream().forEach(variacaoTotvs -> {
             var variacaoModel = variacaoMapper.map(variacaoTotvs);
-
-            if (!variacaoService.isVariacaoSalva(variacaoTotvs)) {
-                var entidade = entidadeService.salvar(EnumTipoEntidade.VARIACAO);
-                variacaoModel.setIdEntidade(entidade.getId());
-            } else {
-                var variacaoSalva = variacaoRepository.findByIdentificadorOrigem(variacaoTotvs.getExternalId());
-                if (variacaoSalva.isPresent()) {
-                    variacaoModel.setId(variacaoSalva.get().getId());
-                    variacaoModel.setIdEntidade(variacaoSalva.get().getIdEntidade());
-                }
-
-            }
-            var variacao = variacaoRepository.save(variacaoModel);
+            var variacao = variacaoService.salvar(variacaoModel);
             controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), variacao.getIdEntidade());
             variacaoService.salvarVariacoesItem(controleExecucaoFluxo, variacaoTotvs.getExternalId(), variacao.getId());
-
         });
 
         logger.info("=======================================================================");
         logger.info("REALIZANDO INSERÇÃO DE " + variacoes.size() + " VARIACÕES NO BANCO DE DADOS");
         logger.info("=======================================================================");
 
-
     }
+
 
     @Override
     public EnumNomeStrategy getNomeStrategy() {

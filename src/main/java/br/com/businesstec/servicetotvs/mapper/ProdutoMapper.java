@@ -13,6 +13,7 @@ public interface ProdutoMapper {
     ProdutoMapper INSTANCE = Mappers.getMapper(ProdutoMapper.class);
 
     @Mapping(source = "idProduto", target = "identificadorOrigem")
+    @Mapping(source = "idMarcaProduto", target = "identificadorOrigemMarca")
     Produto map(ObjetoTOTVS dto);
 
     default boolean map(int value) {

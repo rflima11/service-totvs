@@ -3,7 +3,7 @@ package br.com.businesstec.servicetotvs.listenner.events;
 import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 import br.com.businesstec.servicetotvs.events.ControleExecucaoFluxoEvent;
 import br.com.businesstec.servicetotvs.factory.ConsultaSimpleFactory;
-import br.com.businesstec.servicetotvs.factory.StrategyFactory;
+import br.com.businesstec.servicetotvs.factory.StrategyRmFactory;
 import br.com.businesstec.servicetotvs.service.ConsultaSqlService;
 import br.com.businesstec.servicetotvs.service.ControleExecucaoFluxoService;
 import org.slf4j.Logger;
@@ -22,10 +22,10 @@ public class ControleExecucaoFluxoListenner implements ApplicationListener<Contr
 
     private final ControleExecucaoFluxoService controleExecucaoFluxoService;
     private final ConsultaSqlService consultaSqlService;
-    private final StrategyFactory strategyFactory;
+    private final StrategyRmFactory strategyFactory;
 
 
-    public ControleExecucaoFluxoListenner(ControleExecucaoFluxoService controleExecucaoFluxoTentativaService, ConsultaSqlService consultaSqlService, StrategyFactory strategyFactory) {
+    public ControleExecucaoFluxoListenner(ControleExecucaoFluxoService controleExecucaoFluxoTentativaService, ConsultaSqlService consultaSqlService, StrategyRmFactory strategyFactory) {
         this.controleExecucaoFluxoService = controleExecucaoFluxoTentativaService;
         this.consultaSqlService = consultaSqlService;
         this.strategyFactory = strategyFactory;
@@ -37,6 +37,7 @@ public class ControleExecucaoFluxoListenner implements ApplicationListener<Contr
         var idEntidade = controleExecucaoFluxoService.recuperarTipoEntidade(controleExecucaoFluxo);
         var parametrosDaConsulta = ConsultaSimpleFactory.getParametrosConsulta(controleExecucaoFluxo.getDataHora(), idEntidade);
         var response = consultaSqlService.realizaConsulta(parametrosDaConsulta);
+
         if (Objects.isNull(response.getResultados())) {
             //tratar se nao vier registros
             logger.info("NÃO FORAM ENCONTRADOS NOVOS REGISTROS ID CONTROLE FLUXO: ".concat(controleExecucaoFluxo.getId().toString()));
@@ -44,7 +45,7 @@ public class ControleExecucaoFluxoListenner implements ApplicationListener<Contr
         } else {
             var strategy = strategyFactory.findStrategy(EnumNomeStrategy.getStrategyByIdEntidade(idEntidade));
             logger.info("NOVO REGISTRO ENCONTRADO, ESTRATÉGIA: ".concat(strategy.getNomeStrategy().name()));
-            strategy.salvar(response, controleExecucaoFluxo);
+            strategy.executar(response, controleExecucaoFluxo);
         }
 
         controleExecucaoFluxoService.atualizarHora(controleExecucaoFluxo);

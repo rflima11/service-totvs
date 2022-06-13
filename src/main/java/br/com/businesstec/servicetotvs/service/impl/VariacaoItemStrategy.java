@@ -36,7 +36,7 @@ public class VariacaoItemStrategy implements EntidadeStrategy {
     }
 
     @Override
-    public void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
+    public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var variacoes = variacaoService.encontrarTodasVariacoes();
 
             var variacaoItem = realizarConsultaSQLResponseDTO.getResultados();

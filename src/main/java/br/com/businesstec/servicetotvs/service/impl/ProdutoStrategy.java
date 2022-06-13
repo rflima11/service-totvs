@@ -34,7 +34,7 @@ public class ProdutoStrategy implements EntidadeStrategy {
     }
 
     @Override
-    public void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
+    public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var produtos = realizarConsultaSQLResponseDTO.getResultados();
         
         produtos.stream().forEach(p -> {
