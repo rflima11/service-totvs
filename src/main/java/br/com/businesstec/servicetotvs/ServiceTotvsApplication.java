@@ -12,20 +12,13 @@ import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
-public class ServiceTotvsApplication extends SpringBootServletInitializer {
+public class ServiceTotvsApplication {//extends SpringBootServletInitializer {
 
 	@Autowired
 	private SoapProperties soapProperties;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceTotvsApplication.class, args);
-	}
-
-	@Bean
-	CommandLineRunner run(SoapProperties soapProperties) {
-		return args -> {
-			System.out.println(soapProperties.getSaveRecord());
-		};
 	}
 
 	@Bean

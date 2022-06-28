@@ -40,6 +40,7 @@ public interface SaveRecordParametrosParser {
     @Mapping(source = "cliente.telefone1", target = "parametros.celular")
     @Mapping(source = "endereco.estado", target = "parametros.estado")
     @Mapping(source = "endereco.cep", target = "parametros.cepPagamento")
+    @Mapping(source = "cliente.cpfCnpj", target = "parametros.cpfCnpj")
 
 //    @Mapping(source = "naoSei", target = "parametros.codigoMunicipio")
 //    @Mapping(source = "naoSei", target = "parametros.codigoMunicipioPagamento")

@@ -25,7 +25,8 @@ public class ControleExecucaoFluxoEntidadeServiceImpl implements ControleExecuca
     }
 
     @Override
-    public ControleExecucaoFluxoEntidade atualizarIntegracao(ControleExecucaoFluxoEntidade controleExecucaoFluxoEntidade) {
+    public ControleExecucaoFluxoEntidade
+    atualizarIntegracao(ControleExecucaoFluxoEntidade controleExecucaoFluxoEntidade) {
         controleExecucaoFluxoEntidade.setIntegrado(true);
         return repository.save(controleExecucaoFluxoEntidade);
     }

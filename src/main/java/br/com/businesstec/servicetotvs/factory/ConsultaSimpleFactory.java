@@ -24,7 +24,8 @@ public class ConsultaSimpleFactory {
         var formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME.ofPattern("yyyyMMdd HH:mm:ss").withZone(ZoneId.systemDefault());
         var horaAtual = dataSinc.atZone(ZoneId.systemDefault());
         params.put(EnumParametersSoap.DATASINC_D, formatter.format(horaAtual));
-//        params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 6, 12, 8, 30, 0)));
+
+//      params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 6, 12, 8, 30, 0)));
 
 
         if (Objects.equals(EntidadeEnum.MARCA_PRODUTO.getValue(), idEntidade)) {
