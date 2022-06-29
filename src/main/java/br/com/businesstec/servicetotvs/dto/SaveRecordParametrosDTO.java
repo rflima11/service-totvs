@@ -10,7 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
-@XmlRootElement(name = "![CDATA[<FinCFOBR ")
+//@XmlRootElement(name = "![CDATA[<FinCFOBR ")
+@XmlRootElement(name = "FinCFOBR")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SaveRecordParametrosDTO {
 
@@ -20,18 +21,15 @@ public class SaveRecordParametrosDTO {
     @XmlElement(name = "FCFOCOMPL")
     private ParametrosClienteComplementares parametrosComplementares;
 
-    public ParametrosCliente getParametrosCliente() {
+    public ParametrosCliente getParametros() {
         return parametros;
     }
-
-    public void setParametrosCliente(ParametrosCliente parametrosCliente) {
+    public void setParametros(ParametrosCliente parametrosCliente) {
         this.parametros = parametrosCliente;
     }
-
     public ParametrosClienteComplementares getParametrosComplementares() {
         return parametrosComplementares;
     }
-
     public void setParametrosComplementares(ParametrosClienteComplementares parametrosComplementares) {
         this.parametrosComplementares = parametrosComplementares;
     }

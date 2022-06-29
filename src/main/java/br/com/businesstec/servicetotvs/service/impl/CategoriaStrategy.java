@@ -29,14 +29,13 @@ public class CategoriaStrategy implements EntidadeStrategy {
     }
 
     @Override
-    public void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
+    public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var categorias = realizarConsultaSQLResponseDTO.getResultados();
 
         categorias.stream().forEach(categoriaTotvs -> {
             var categoriaEcommerceModel = categoriaEcommerceMapper.map(categoriaTotvs);
             var categoriaModel = categoriaMapper.map(categoriaTotvs);
             var categoria = categoriaService.salvar(categoriaModel);
-            categoriaEcommerceModel.setIdCategoria(categoria.getId());
             categoriaEcommerceService.salvar(categoriaEcommerceModel);
             controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), categoria.getIdEntidade());
         });

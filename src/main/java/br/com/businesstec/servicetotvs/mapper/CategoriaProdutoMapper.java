@@ -1,6 +1,5 @@
 package br.com.businesstec.servicetotvs.mapper;
 
-import br.com.businesstec.model.entities.MarcaEcommerce;
 import br.com.businesstec.model.entities.ProdutoCategoria;
 import br.com.businesstec.servicetotvs.dto.ObjetoTOTVS;
 import org.mapstruct.Mapper;
@@ -14,7 +13,13 @@ public interface CategoriaProdutoMapper {
 
     @Mapping(source = "idProdutoCategoria", target = "idProduto")
     @Mapping(source = "idCategoriaProduto", target = "idCategoria")
+    @Mapping(source = "principal", target = "principal")
     ProdutoCategoria map(ObjetoTOTVS dto);
 
+    default boolean map(String value) {
+        if (value.toLowerCase().equals("true"))
+            return true;
+        return false;
+    };
 
 }

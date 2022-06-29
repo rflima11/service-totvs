@@ -14,11 +14,12 @@
 	<name>service-totvs</name>
 	<description>Serviço para consumo dos webservices TOTVS</description>
 	<properties>
+		<start-class>br.com.businesstec.servicetotvs.ServiceTotvsApplication</start-class>
 		<java.version>11</java.version>
 		<httpclient.version>4.5.4</httpclient.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
-
 	</properties>
+	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -36,7 +37,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-artemis</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -52,6 +57,12 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.moxy</artifactId>
+			<version>2.5.0</version>
 		</dependency>
 
 		<dependency>
@@ -99,8 +110,17 @@
 	</profiles>
 
 	<build>
+		<finalName>${artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/application.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
-
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

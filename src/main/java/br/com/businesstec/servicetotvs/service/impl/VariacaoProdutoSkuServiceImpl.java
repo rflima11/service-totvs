@@ -12,6 +12,7 @@ import br.com.businesstec.servicetotvs.service.VariacaoProdutoSkuService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,10 +49,13 @@ public class VariacaoProdutoSkuServiceImpl implements VariacaoProdutoSkuService 
         var response = consultaSqlService.realizaConsulta(parametros);
         var resultados = response.getResultados();
 
-        resultados.stream().forEach(varicaoProduto -> {
-            var variacaoProdutoModel = mapper.map(varicaoProduto);
-            this.save(variacaoProdutoModel);
-        });
+        if (Objects.nonNull(resultados)) {
+            resultados.stream().forEach(varicaoProduto -> {
+                var variacaoProdutoModel = mapper.map(varicaoProduto);
+                this.save(variacaoProdutoModel);
+            });
+        }
+
     }
 
 

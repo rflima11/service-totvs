@@ -16,6 +16,13 @@ public class RealizarConsultaParametrosDTO {
     private final String codSistema;
     private Map<EnumParametersSoap, String> params;
 
+    public RealizarConsultaParametrosDTO(String codSetenca) {
+        this.codSistema =  ConsultaParametrosEnum.COD_SISTEMA.getValue();
+        this.codColigada = Integer.valueOf(ConsultaParametrosEnum.COD_COLIGADA.getValue());
+        this.codSetenca = codSetenca;
+        this.params = new HashMap<EnumParametersSoap, String>();
+    }
+
     public RealizarConsultaParametrosDTO(String codSetenca, Map<EnumParametersSoap, String> params) {
         this.codSistema =  ConsultaParametrosEnum.COD_SISTEMA.getValue();
         this.codColigada = Integer.valueOf(ConsultaParametrosEnum.COD_COLIGADA.getValue());

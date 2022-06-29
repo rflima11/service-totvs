@@ -58,16 +58,7 @@ public class ProdutoSkuServiceImpl implements ProdutoSkuService {
 
     @Override
     public ProdutoSku salvar(ProdutoSku produtoSku) {
-        var optionalProdutoSku = produtoSkuRepository.findByIdentificadorOrigem(produtoSku.getIdentificadorOrigem());
-
-        if (optionalProdutoSku.isPresent()) {
-            var produtoSkuSalvo = optionalProdutoSku.get();
-            produtoSku.setId(produtoSkuSalvo.getId());
-            produtoSku.setIdEntidade(produtoSkuSalvo.getIdEntidade());
-        } else {
-            produtoSku.setId(null);
-            produtoSku.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.PRODUTO_SKU).getId());
-        }
+        produtoSku.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.PRODUTO_SKU).getId());
         return produtoSkuRepository.save(produtoSku);
     }
 }

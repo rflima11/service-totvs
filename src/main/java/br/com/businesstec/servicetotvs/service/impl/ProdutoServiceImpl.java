@@ -24,16 +24,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public Produto salvar(Produto produto) {
-        var produtoOptional = produtoRepository.findByIdentificadorOrigem(produto.getIdentificadorOrigem());
-
-        if (produtoOptional.isPresent()) {
-            var produtoSalvo = produtoOptional.get();
-            produto.setId(produtoSalvo.getId());
-            produto.setIdEntidade(produtoSalvo.getIdEntidade());
-        } else {
-            var entidade = entidadeService.salvar(EnumTipoEntidade.PRODUTO);
-            produto.setIdEntidade(entidade.getId());
-        }
+        produto.setIdEntidade(entidadeService.salvar(EnumTipoEntidade.PRODUTO).getId());
         return produtoRepository.save(produto);
     }
 

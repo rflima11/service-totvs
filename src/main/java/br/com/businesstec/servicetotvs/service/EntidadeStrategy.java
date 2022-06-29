@@ -6,7 +6,7 @@ import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 
 public interface EntidadeStrategy {
 
-    void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo);
+    void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo);
 
     EnumNomeStrategy getNomeStrategy();
 }

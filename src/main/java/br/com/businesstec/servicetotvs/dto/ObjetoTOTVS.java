@@ -14,8 +14,12 @@ public class ObjetoTOTVS {
     private Long id;
     @XmlElement(name = "ID_MARCA")
     private Long idMarca;
+    @XmlElement(name = "IDMARCA")
+    private Long idMarcaProduto;
     @XmlElement(name = "NAME")
     private String name;
+    @XmlElement(name = "COD_CLIENTE")
+    private String codigoCliente;
     @XmlElement(name = "FEATURED")
     private String featured;
     @XmlElement(name = "EXTERNALID")
@@ -46,6 +50,8 @@ public class ObjetoTOTVS {
     private Long idCategoriaProduto;
     @XmlElement(name = "DESCRICAO")
     private String descricao;
+    @XmlElement(name = "COD_MUNICIPIO")
+    private String codMunicipio;
     @XmlElement(name = "DESCRICAO_RESUMIDA")
     private String descricaoResumida;
     @XmlElement(name = "DESCRICAO_COMPLETA")
@@ -80,11 +86,18 @@ public class ObjetoTOTVS {
     private int diasPrazoEntrega;
     @XmlElement(name = "IMAGEM_PRINCIPAL")
     private String imagemPrincipal;
+    @XmlElement(name = "PRINCIPAL")
+    private String principal;
+    @XmlElement(name = "IMAGEM_ALTERNATIVA")
+    private String imagemAlternativa;
     @XmlElement(name = "NIVEL_SUPERIOR")
     private String nivelSuperior;
     @XmlElement(name = "LINK")
     private String link;
-
+    @XmlElement(name = "NOME")
+    private String nome;
+    @XmlElement(name = "DEFAULT")
+    private String defaultt;
 
 
     public Long getId() {
@@ -217,6 +230,14 @@ public class ObjetoTOTVS {
 
     public Double getPeso() {
         return peso;
+    }
+
+    public Long getIdMarcaProduto() {
+        return idMarcaProduto;
+    }
+
+    public void setIdMarcaProduto(Long idMarcaProduto) {
+        this.idMarcaProduto = idMarcaProduto;
     }
 
     public void setPeso(Double peso) {
@@ -381,5 +402,53 @@ public class ObjetoTOTVS {
 
     public void setIdMarca(Long idMarca) {
         this.idMarca = idMarca;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getImagemAlternativa() {
+        return imagemAlternativa;
+    }
+
+    public void setImagemAlternativa(String imagemAlternativa) {
+        this.imagemAlternativa = imagemAlternativa;
+    }
+
+    public String getCodigoCliente() {
+        return codigoCliente;
+    }
+
+    public void setCodigoCliente(String codigoCliente) {
+        this.codigoCliente = codigoCliente;
+    }
+
+    public String getDefaultt() {
+        return defaultt;
+    }
+
+    public void setDefaultt(String defaultt) {
+        this.defaultt = defaultt;
+    }
+
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    public String getCodMunicipio() {
+        return codMunicipio;
+    }
+
+    public void setCodMunicipio(String codMunicipio) {
+        this.codMunicipio = codMunicipio;
     }
 }

@@ -32,7 +32,7 @@ public class ProdutoSkuStrategy implements EntidadeStrategy {
     }
 
     @Override
-    public void salvar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
+    public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
 
         if (Objects.nonNull(realizarConsultaSQLResponseDTO.getResultados())) {
             realizarConsultaSQLResponseDTO.getResultados().forEach(resultado -> {
