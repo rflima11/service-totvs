@@ -49,7 +49,7 @@ public class ProdutoSkuServiceImpl implements ProdutoSkuService {
                 produtoSku.setIdentificadorOrigem(String.valueOf(resultado.getId()));
                 produtoSku.setIdentificadorOrigemProduto(idProduto);
                 var produtoSkuSalvo = this.salvar(produtoSku);
-                variacaoProdutoSkuService.salvarVariacaoProdutoSku(controleExecucaoFluxo, Long.valueOf(produtoSkuSalvo.getIdentificadorOrigem()));
+                variacaoProdutoSkuService.salvarVariacaoProdutoSku(controleExecucaoFluxo, Long.valueOf(produtoSkuSalvo.getIdentificadorOrigem()), produtoSkuSalvo.getIdEntidade());
                 controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), produtoSkuSalvo.getIdEntidade());
             });
         }

@@ -36,6 +36,7 @@ public class CategoriaStrategy implements EntidadeStrategy {
             var categoriaEcommerceModel = categoriaEcommerceMapper.map(categoriaTotvs);
             var categoriaModel = categoriaMapper.map(categoriaTotvs);
             var categoria = categoriaService.salvar(categoriaModel);
+            categoriaEcommerceModel.setIdCategoria(categoria.getId());
             categoriaEcommerceService.salvar(categoriaEcommerceModel);
             controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), categoria.getIdEntidade());
         });

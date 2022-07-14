@@ -43,7 +43,7 @@ public class VariacaoProdutoSkuServiceImpl implements VariacaoProdutoSkuService 
     }
 
     @Override
-    public void salvarVariacaoProdutoSku(ControleExecucaoFluxo controleExecucaoFluxo, Long idProdutoSku) {
+    public void salvarVariacaoProdutoSku(ControleExecucaoFluxo controleExecucaoFluxo, Long idProdutoSku, Long idEntidade) {
         var parametros = ConsultaSimpleFactory.getParametrosConsulta(controleExecucaoFluxo.getDataHora(), EntidadeEnum.PRODUTO_SKU_VARIACOES.getValue());
         parametros.adicionarParametro(EnumParametersSoap.ID_PRODUTO_SKU_VARIACAO, idProdutoSku.toString());
         var response = consultaSqlService.realizaConsulta(parametros);
@@ -52,6 +52,7 @@ public class VariacaoProdutoSkuServiceImpl implements VariacaoProdutoSkuService 
         if (Objects.nonNull(resultados)) {
             resultados.stream().forEach(varicaoProduto -> {
                 var variacaoProdutoModel = mapper.map(varicaoProduto);
+                variacaoProdutoModel.setIdProdutoSku(idEntidade);
                 this.save(variacaoProdutoModel);
             });
         }

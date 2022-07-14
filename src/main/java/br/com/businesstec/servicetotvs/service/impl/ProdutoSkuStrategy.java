@@ -42,7 +42,7 @@ public class ProdutoSkuStrategy implements EntidadeStrategy {
                 var produtoSkuEcommerce = ecommerceMapper.map(resultado);
                 produtoSkuEcommerce.setIdProdutoSku(produtoSkuSalvo.getId());
                 produtoSkuEcommerceService.salvar(produtoSkuEcommerce);
-                variacaoProdutoSku.salvarVariacaoProdutoSku(controleExecucaoFluxo, Long.valueOf(produtoSkuSalvo.getIdentificadorOrigem()));
+                variacaoProdutoSku.salvarVariacaoProdutoSku(controleExecucaoFluxo, Long.valueOf(produtoSkuSalvo.getIdentificadorOrigem()), produtoSkuSalvo.getIdEntidade());
                 controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), produtoSkuSalvo.getIdEntidade());
             });
         }

@@ -5,5 +5,5 @@ import br.com.businesstec.model.entities.VariacaoProdutoSku;
 
 public interface VariacaoProdutoSkuService {
 
-    void salvarVariacaoProdutoSku(ControleExecucaoFluxo controleExecucaoFluxo, Long idProdutoSku);
+    void salvarVariacaoProdutoSku(ControleExecucaoFluxo controleExecucaoFluxo, Long idProdutoSku, Long idEntidade);
 }
