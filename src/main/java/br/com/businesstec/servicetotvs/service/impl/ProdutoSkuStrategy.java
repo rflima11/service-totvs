@@ -37,7 +37,7 @@ public class ProdutoSkuStrategy implements EntidadeStrategy {
         if (Objects.nonNull(realizarConsultaSQLResponseDTO.getResultados())) {
             realizarConsultaSQLResponseDTO.getResultados().forEach(resultado -> {
                 var produtoSku = mapper.map(resultado);
-                produtoSku.setIdentificadorOrigem(String.valueOf(resultado.getId()));
+                produtoSku.setIdentificadorOrigem(String.valueOf(resultado.getIdTotvs()));
                 var produtoSkuSalvo = produtoSkuService.salvar(produtoSku);
                 var produtoSkuEcommerce = ecommerceMapper.map(resultado);
                 produtoSkuEcommerce.setIdProdutoSku(produtoSkuSalvo.getId());

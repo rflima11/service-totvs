@@ -4,9 +4,10 @@ import br.com.businesstec.model.entities.ProdutoCategoria;
 import br.com.businesstec.servicetotvs.dto.ObjetoTOTVS;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CategoriaProdutoMapper {
 
     CategoriaProdutoMapper INSTANCE = Mappers.getMapper(CategoriaProdutoMapper.class);

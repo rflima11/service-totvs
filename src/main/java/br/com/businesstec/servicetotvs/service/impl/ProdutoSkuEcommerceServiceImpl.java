@@ -16,13 +16,6 @@ public class ProdutoSkuEcommerceServiceImpl implements ProdutoSkuEcommerceServic
 
     @Override
     public ProdutoSkuEcommerce salvar(ProdutoSkuEcommerce produtoSkuEcommerce) {
-        var produtoSkuEcommerceOptional = produtoSkuEcommerceRepository.findByIdProdutoSku(produtoSkuEcommerce.getIdProdutoSku());
-
-        if (produtoSkuEcommerceOptional.isPresent()) {
-            var produtoSalvo = produtoSkuEcommerceOptional.get();
-            produtoSkuEcommerce.setId(produtoSalvo.getId());
-
-        }
         return produtoSkuEcommerceRepository.save(produtoSkuEcommerce);
     }
 }

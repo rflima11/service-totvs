@@ -3,6 +3,7 @@ package br.com.businesstec.servicetotvs.soap;
 import br.com.businesstec.servicetotvs.config.properties.SoapProperties;
 import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
 import br.com.businesstec.servicetotvs.dto.SaveRecordParametrosDTO;
+import br.com.businesstec.servicetotvs.dto.SaveRecordRequest;
 import br.com.businesstec.servicetotvs.mapper.RealizaConsultaSQLParser;
 import br.com.businesstec.servicetotvs.mapper.SaveRecordSQLParser;
 import br.com.businesstec.servicetotvs.wsdl.realizarconsulta.RealizarConsultaSQLResponse;
@@ -33,7 +34,7 @@ public class SaveRecordSoap {
         this.soapProperties = soapProperties;
     }
 
-    public SaveRecordResponse saveRecord(SaveRecordParametrosDTO parametrosDTO) {
+    public SaveRecordResponse saveRecord(SaveRecordRequest parametrosDTO) {
         var request =  SaveRecordSQLParser.getRequestSaveRecord(parametrosDTO);
         return (SaveRecordResponse) webServiceTemplate.marshalSendAndReceive(webServiceTemplate.getDefaultUri(),
                 request, new SoapActionCallback(soapProperties.getSaveRecord().getAction()));

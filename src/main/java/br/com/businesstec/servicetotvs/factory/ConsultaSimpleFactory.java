@@ -18,71 +18,36 @@ public class ConsultaSimpleFactory {
         throw new IllegalStateException("Classe utilitária não deve ser instanciada");
     }
 
-    public static RealizarConsultaParametrosDTO getParametrosConsulta(LocalDateTime dataSinc, Long idEntidade) {
-        Map<EnumParametersSoap, String> params = new HashMap<>();
-
-        var formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME.ofPattern("yyyyMMdd HH:mm:ss").withZone(ZoneId.systemDefault());
-        var horaAtual = dataSinc.atZone(ZoneId.systemDefault());
-        params.put(EnumParametersSoap.DATASINC_D, formatter.format(horaAtual));
-
-//      params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 6, 12, 8, 30, 0)));
-
-
+    public static RealizarConsultaParametrosDTO getParametrosConsulta(Long idEntidade) {
         if (Objects.equals(EntidadeEnum.MARCA_PRODUTO.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
-
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_MARCAS.getValue(), params);
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_MARCAS.getValue());
 
         } else if (Objects.equals(EntidadeEnum.VARIACOES.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SENTENCA_VARIACOES.getValue(), params);
-
-        } else if (Objects.equals(EntidadeEnum.VARIACOES_ITEM.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
-
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_VARIACOES_ITEM.getValue(), params);//id);
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SENTENCA_VARIACOES.getValue());
 
         } else if (Objects.equals(EntidadeEnum.PRODUTO.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO.getValue(), params);
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO.getValue());
         } else if (Objects.equals(EntidadeEnum.CATEGORIA.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CATEGORIAS.getValue(), params);
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CATEGORIAS.getValue());
         } else if (Objects.equals(EntidadeEnum.PRODUTO_SKU.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO_SKU.getValue(), params);
-        } else if (Objects.equals(EntidadeEnum.CATEGORIA_POR_PRODUTO.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO_SKU.getValue());
+        }  else if (Objects.equals(EntidadeEnum.IMAGEM_PRODUTO.getValue(), idEntidade)) {
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CATEGORIAS_PARA_PRODUTOS.getValue(), params);
-        } else if (Objects.equals(EntidadeEnum.PRODUTO_SKU_VARIACOES.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
-
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRODUTO_SKU_VARIACOES.getValue(), params);
-        } else if (Objects.equals(EntidadeEnum.IMAGEM_PRODUTO.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
-
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_IMAGEM.getValue(), params);
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_IMAGEM.getValue());
         } else if (Objects.equals(EntidadeEnum.PRECO_PRODUTO.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRECO.getValue(), params);
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_PRECO.getValue());
         } else if (Objects.equals(EntidadeEnum.ESTOQUE_PRODUTO.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
 
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_ESTOQUE.getValue(), params);
-        } else if (Objects.equals(EntidadeEnum.CLIENTE.getValue(), idEntidade)) {
-//            params.put(EnumParametersSoap.DATASINC_D, formatter.format(LocalDateTime.of(2022, 05, 06, 11, 30, 0)));
-
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CLIENTE.getValue(), new HashMap<>());
-        } else if (Objects.equals(EntidadeEnum.COD_MUNICIPIO.getValue(), idEntidade)) {
-
-            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_MUNICIPIO.getValue(), new HashMap<>());
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_ESTOQUE.getValue());
+        } else if (Objects.equals(EntidadeEnum.STATUS_PEDIDO.getValue(), idEntidade)) {
+            return new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_STATUS_PEDIDO.getValue());
         }
-        return null;
+
+        throw new RuntimeException("Não encontrado o tipo de execução");
     }
 }

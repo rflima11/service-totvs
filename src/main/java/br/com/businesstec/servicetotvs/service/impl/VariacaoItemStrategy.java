@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.stream.Collectors;
 
 @Service
-public class VariacaoItemStrategy implements EntidadeStrategy {
+public class VariacaoItemStrategy {
 
     private static final Logger logger = LoggerFactory.getLogger(VariacoesStrategy.class);
 
@@ -35,7 +35,7 @@ public class VariacaoItemStrategy implements EntidadeStrategy {
         this.mapper = VariacaoItemMapper.INSTANCE;
     }
 
-    @Override
+
     public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var variacoes = variacaoService.encontrarTodasVariacoes();
 
@@ -57,10 +57,5 @@ public class VariacaoItemStrategy implements EntidadeStrategy {
 
                 variacaoItemRepository.saveAll(variacoesModel);
             }
-    }
-
-    @Override
-    public EnumNomeStrategy getNomeStrategy() {
-        return EnumNomeStrategy.LISTA_VARIACAO_STRATEGY;
     }
 }

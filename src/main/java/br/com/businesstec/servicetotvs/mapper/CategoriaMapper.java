@@ -11,7 +11,7 @@ public interface CategoriaMapper {
 
     CategoriaMapper INSTANCE = Mappers.getMapper(CategoriaMapper.class);
 
-    @Mapping(source = "id", target = "identificadorOrigem")
+    @Mapping(source = "idTotvs", target = "identificadorOrigem")
     Categoria map(ObjetoTOTVS dto);
 
 }

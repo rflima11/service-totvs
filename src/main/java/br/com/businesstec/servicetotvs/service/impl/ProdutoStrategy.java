@@ -42,11 +42,9 @@ public class ProdutoStrategy implements EntidadeStrategy {
             var produtoSalvo = produtoService.salvar(produto);
             var produtoEcommerce = produtoEcommerceMapper.map(p);
             produtoEcommerce.setIdProduto(produto.getId());
-            produtoCategoriaService.buscarCategoriasPorProdutos(controleExecucaoFluxo, produtoSalvo.getIdentificadorOrigem());
-            produtoEcommerceService.salvar(produtoEcommerce);
+            produtoCategoriaService.buscarCategoriasPorProdutos(controleExecucaoFluxo, produtoSalvo);
+            produtoEcommerceService.salvar(produtoEcommerce, produtoSalvo.getId());
             controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), produtoSalvo.getIdEntidade());
-
-//          produtoSkuService.salvarProdutosSkuByIdProduto(controleExecucaoFluxo, produto.getIdentificadorOrigem());
         });
 
     }

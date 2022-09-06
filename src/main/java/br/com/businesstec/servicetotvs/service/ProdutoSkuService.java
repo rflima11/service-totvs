@@ -5,7 +5,5 @@ import br.com.businesstec.model.entities.ProdutoSku;
 
 public interface ProdutoSkuService {
 
-    void salvarProdutosSkuByIdProduto(ControleExecucaoFluxo controleExecucaoFluxo, String idProduto);
-
     ProdutoSku salvar(ProdutoSku produtoSku);
 }

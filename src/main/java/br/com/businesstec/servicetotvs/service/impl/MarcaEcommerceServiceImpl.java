@@ -16,11 +16,6 @@ public class MarcaEcommerceServiceImpl implements MarcaEcommerceService {
 
     @Override
     public MarcaEcommerce salvar(MarcaEcommerce marcaEcommerce) {
-        var optionalMarca = marcaEcommerceRepository.findByIdMarca(marcaEcommerce.getIdMarca());
-        if (optionalMarca.isPresent()) {
-            var marcaSalva = optionalMarca.get();
-            marcaEcommerce.setId(marcaSalva.getId());
-        }
         return marcaEcommerceRepository.save(marcaEcommerce);
     }
 }

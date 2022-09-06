@@ -16,12 +16,7 @@ public class ControleExecucaoFluxoEntidadeServiceImpl implements ControleExecuca
 
     @Override
     public void registrar(Long idControleExecucaoFluxo, Long idEntidade) {
-        var optControleExecucaoFluxo = repository.findByIdEntidade(idEntidade);
-        var controleExecucaoFluxoEntidade = new ControleExecucaoFluxoEntidade(idControleExecucaoFluxo, idEntidade);
-        if (optControleExecucaoFluxo.isPresent())  {
-            controleExecucaoFluxoEntidade.setId(optControleExecucaoFluxo.get().getId());
-        }
-        repository.save(controleExecucaoFluxoEntidade);
+        repository.save(new ControleExecucaoFluxoEntidade(idControleExecucaoFluxo, idEntidade));
     }
 
     @Override
@@ -34,7 +29,8 @@ public class ControleExecucaoFluxoEntidadeServiceImpl implements ControleExecuca
     @Override
     public ControleExecucaoFluxoEntidade atualizarIntegracaoErro(ControleExecucaoFluxoEntidade controleExecucaoFluxoEntidade) {
         controleExecucaoFluxoEntidade.setIntegrado(false);
-        return repository.save(controleExecucaoFluxoEntidade);    }
+        return repository.save(controleExecucaoFluxoEntidade);
+    }
 
 
 }

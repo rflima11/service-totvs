@@ -18,13 +18,11 @@ public interface SaveRecordParametrosParser {
     @Mapping(source = "cliente.nome", target = "parametros.nome")
     @Mapping(source = "cliente.email", target = "parametros.email")
     @Mapping(source = "cliente.telefone1", target = "parametros.telefone")
-//    @Mapping(source = "naoSei", target = "parametros.pagRec")
     @Mapping(source = "endereco.logradouro", target = "parametros.rua")
     @Mapping(source = "endereco.numero", target = "parametros.numero")
     @Mapping(source = "endereco.complemento", target = "parametros.complemento")
     @Mapping(source = "endereco.bairro", target = "parametros.bairro")
     @Mapping(source = "endereco.cidade", target = "parametros.cidade")
-//    @Mapping(source = "naoSei", target = "parametros.codet")
     @Mapping(source = "endereco.cep", target = "parametros.cep")
     @Mapping(source = "endereco.logradouro", target = "parametros.ruaPgto")
     @Mapping(source = "endereco.numero", target = "parametros.numeroPgto")
@@ -36,15 +34,10 @@ public interface SaveRecordParametrosParser {
     @Mapping(source = "endereco.numero", target = "parametros.numeroEntrega")
     @Mapping(source = "endereco.bairro", target = "parametros.bairroEntrega")
     @Mapping(source = "endereco.cidade", target = "parametros.cidadeEntrega")
-//    @Mapping(source = "naoSei", target = "parametros.codetEntrega")
     @Mapping(source = "cliente.telefone1", target = "parametros.celular")
     @Mapping(source = "endereco.estado", target = "parametros.estado")
     @Mapping(source = "endereco.cep", target = "parametros.cepPagamento")
     @Mapping(source = "cliente.cpfCnpj", target = "parametros.cpfCnpj")
-
-//    @Mapping(source = "naoSei", target = "parametros.codigoMunicipio")
-//    @Mapping(source = "naoSei", target = "parametros.codigoMunicipioPagamento")
-//    @Mapping(source = "naoSei", target = "parametros.codigoMunicipioEntrega")
     SaveRecordParametrosDTO map(Cliente cliente, Endereco endereco);
 
     @AfterMapping

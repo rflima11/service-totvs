@@ -39,6 +39,7 @@ public class CategoriaStrategy implements EntidadeStrategy {
             categoriaEcommerceModel.setIdCategoria(categoria.getId());
             categoriaEcommerceService.salvar(categoriaEcommerceModel);
             controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), categoria.getIdEntidade());
+
         });
     }
 

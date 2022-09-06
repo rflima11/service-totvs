@@ -17,6 +17,5 @@ public interface VariacaoService {
 
     void salvarVariacoesItem(ControleExecucaoFluxo controleExecucaoFluxo, String externalId, Long idVariacao);
 
-    boolean isVariacaoSalva(ObjetoTOTVS objetoTOTVS);
 
 }

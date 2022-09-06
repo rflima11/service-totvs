@@ -4,6 +4,8 @@ import br.com.businesstec.servicetotvs.enums.ConsultaParametrosEnum;
 import br.com.businesstec.servicetotvs.enums.EnumParametersSoap;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,6 +17,12 @@ public class RealizarConsultaParametrosDTO {
     private final Integer codColigada;
     private final String codSistema;
     private Map<EnumParametersSoap, String> params;
+
+    public RealizarConsultaParametrosDTO() {
+        this.params = new HashMap<EnumParametersSoap, String>();
+        this.codColigada = Integer.valueOf(ConsultaParametrosEnum.COD_COLIGADA.getValue());
+        this.codSistema =  ConsultaParametrosEnum.COD_SISTEMA.getValue();
+    }
 
     public RealizarConsultaParametrosDTO(String codSetenca) {
         this.codSistema =  ConsultaParametrosEnum.COD_SISTEMA.getValue();
@@ -65,5 +73,13 @@ public class RealizarConsultaParametrosDTO {
         }
         return parametros;
     }
+
+    public void adicionarDataSinc(LocalDateTime dataSinc) {
+        var formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME.ofPattern("yyyyMMdd HH:mm:ss").withZone(ZoneId.systemDefault());
+        var horaAtual = dataSinc.atZone(ZoneId.systemDefault());
+//        var dataFake = formatter.format(LocalDateTime.of(2022, 8, 29, 17, 10, 0));
+        params.put(EnumParametersSoap.DATASINC_D,  formatter.format(horaAtual));
+    }
+
 
 }

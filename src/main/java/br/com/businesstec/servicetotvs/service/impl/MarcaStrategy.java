@@ -36,18 +36,21 @@ public class MarcaStrategy implements EntidadeStrategy {
     public void executar(RealizarConsultaSQLResponseDTO realizarConsultaSQLResponseDTO, ControleExecucaoFluxo controleExecucaoFluxo) {
         var marcas = realizarConsultaSQLResponseDTO.getResultados();
 
-        marcas.stream().forEach(marcaTotvs -> {
-            var marcaEntity = marcaMapper.mapEntity(marcaTotvs);
-            var marca = marcaService.salvar(marcaEntity);
-            var marcaModel = marcaMapper.map(marcaTotvs);
-            marcaModel.setIdMarca(marca.getId());
-            marcaEcommerceService.salvar(marcaModel);
-            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), marca.getIdEntidade());
-        });
-
         logger.info("=======================================================================");
         logger.info("REALIZANDO INSERÇÃO DE " + marcas.size() + " MARCAS NO BANCO DE DADOS");
         logger.info("=======================================================================");
+
+        marcas.stream().forEach(marcaTotvs -> {
+            var marcaEntity = marcaMapper.mapEntity(marcaTotvs);
+            var marca = marcaService.salvar(marcaEntity);
+            var marcaEcommerce = marcaMapper.map(marcaTotvs);
+            marcaEcommerce.setIdMarca(marca.getId());
+            marcaEcommerceService.salvar(marcaEcommerce);
+            logger.info(String.format("MARCA %s SALVA COM SUCESSO!", marca.getDescricao()));
+            controleExecucaoFluxoEntidadeService.registrar(controleExecucaoFluxo.getId(), marca.getIdEntidade());
+        });
+
+
 
     }
 

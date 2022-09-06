@@ -3,18 +3,16 @@ package br.com.businesstec.servicetotvs.service.impl;
 import br.com.businesstec.model.entities.Cliente;
 import br.com.businesstec.model.entities.ControleExecucaoFluxoEntidade;
 import br.com.businesstec.model.entities.Endereco;
+import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
 import br.com.businesstec.servicetotvs.dto.SaveRecordParametrosDTO;
-import br.com.businesstec.servicetotvs.enums.EntidadeEnum;
+import br.com.businesstec.servicetotvs.enums.ConsultaParametrosEnum;
 import br.com.businesstec.servicetotvs.enums.EnumNomeStrategy;
 import br.com.businesstec.servicetotvs.enums.EnumParametersSoap;
-import br.com.businesstec.servicetotvs.factory.ConsultaSimpleFactory;
 import br.com.businesstec.servicetotvs.mapper.SaveRecordParametrosParser;
 import br.com.businesstec.servicetotvs.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class ClienteStrategy implements JetStrategy {
@@ -56,7 +54,7 @@ public class ClienteStrategy implements JetStrategy {
     }
 
     private void inserirCodigoCliente(Cliente cliente, SaveRecordParametrosDTO parametrosDto) {
-        var parametros = ConsultaSimpleFactory.getParametrosConsulta(LocalDateTime.now(), EntidadeEnum.CLIENTE.getValue());
+        var parametros = new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_CLIENTE.getValue());
         parametros.adicionarParametro(EnumParametersSoap.CNPJ_CPF, cliente.getCpfCnpj());
         var resultado = consultaSqlService.realizaConsulta(parametros);
         var codigoCliente = resultado.getResultados().get(0).getCodigoCliente();
@@ -65,7 +63,7 @@ public class ClienteStrategy implements JetStrategy {
     }
 
     private void inserirCodigoCidade(Endereco endereco, SaveRecordParametrosDTO parametrosDTO) {
-        var parametros = ConsultaSimpleFactory.getParametrosConsulta(LocalDateTime.now(), EntidadeEnum.COD_MUNICIPIO.getValue());
+        var parametros = new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_MUNICIPIO.getValue());
         parametros.adicionarParametro(EnumParametersSoap.UF_MUNICIPIO, endereco.getEstado());
         parametros.adicionarParametro(EnumParametersSoap.MUNCIPIO_S, endereco.getCidade());
         var resultado = consultaSqlService.realizaConsulta(parametros);

@@ -15,12 +15,8 @@ public class ProdutoEcommerceServiceImpl implements ProdutoEcommerceService {
     }
 
     @Override
-    public ProdutoEcommerce salvar(ProdutoEcommerce produtoEcommerce) {
-        var produtoOptional = produtoEcommerceRepository.findByIdProduto(produtoEcommerce.getIdProduto());
-        if (produtoOptional.isPresent()) {
-            var produtoSalvo = produtoOptional.get();
-            produtoEcommerce.setId(produtoSalvo.getId());
-        }
+    public ProdutoEcommerce salvar(ProdutoEcommerce produtoEcommerce, Long idProduto) {
+        produtoEcommerce.setIdProduto(idProduto);
         return produtoEcommerceRepository.save(produtoEcommerce);
     }
 }

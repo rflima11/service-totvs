@@ -2,6 +2,7 @@ package br.com.businesstec.servicetotvs.mapper;
 
 
 import br.com.businesstec.servicetotvs.dto.SaveRecordParametrosDTO;
+import br.com.businesstec.servicetotvs.dto.SaveRecordRequest;
 import br.com.businesstec.servicetotvs.dto.SvRecordTest;
 import br.com.businesstec.servicetotvs.utils.SoapUtils;
 import br.com.businesstec.servicetotvs.wsdl.wsdataserver.ObjectFactory;
@@ -25,14 +26,13 @@ public class SaveRecordSQLParser {
 
     private static final String CONTEXTO_VALUE = "CODCOLIGADA=1;CODUSUARIO=integracaoJet";
 
-    public static SaveRecord getRequestSaveRecord(SaveRecordParametrosDTO saveRecordParametrosDTO) {
+    public static SaveRecord getRequestSaveRecord(SaveRecordRequest saveRecordParametrosDTO) {
 
         try {
             var request = new SaveRecord();
             var objectFactory = new ObjectFactory();
             request.setContexto(objectFactory.createSaveRecordContexto(CONTEXTO_VALUE));
-            request.setDataServerName(objectFactory.createSaveRecordDataServerName("FinCFODataBR"));
-
+            request.setDataServerName(objectFactory.createSaveRecordDataServerName(saveRecordParametrosDTO.getDataServerName()));
 
             SvRecordTest sv = new SvRecordTest();
             sv.setBody(formatarRequestSaveRecord(saveRecordParametrosDTO));

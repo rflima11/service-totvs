@@ -107,7 +107,7 @@ public class ParametrosCliente {
     private String tipoClienteFornecedor = "000";
 
     @XmlElement(name = "ATIVO")
-    private String ativo = "0";
+    private String ativo = "1";
 
     @XmlElement(name = "LIMITECREDITO")
     private String limiteCredito = "0.000";
@@ -126,7 +126,7 @@ public class ParametrosCliente {
 
 
     @XmlElement(name = "CFOIMOB")
-    private String bloqueado = "1";
+    private String bloqueado = "0";
 
     @XmlElement(name = "INSCRESTADUAL")
     private String inscricaoEstadual;

@@ -12,7 +12,7 @@ public interface ImagemProdutoMapper {
 
     ImagemProdutoMapper INSTANCE = Mappers.getMapper(ImagemProdutoMapper.class);
 
-    @Mapping(source = "id", target = "identificadorOrigem")
+    @Mapping(source = "idTotvs", target = "identificadorOrigem")
     @Mapping(source = "idProduto", target = "identificadorOrigemProduto")
     @Mapping(source = "nome", target = "nomeImagem")
     ImagemProduto map(ObjetoTOTVS dto);

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class ObjetoTOTVS {
 
     @XmlElement(name = "ID")
-    private Long id;
+    private Long idTotvs;
     @XmlElement(name = "ID_MARCA")
     private Long idMarca;
     @XmlElement(name = "IDMARCA")
@@ -22,6 +22,35 @@ public class ObjetoTOTVS {
     private String codigoCliente;
     @XmlElement(name = "FEATURED")
     private String featured;
+
+    @XmlElement(name = "ID_ORIGEM")
+    private String idOrigem;
+    @XmlElement(name = "CODIGO_STATUS")
+    private String codigoStatus;
+    @XmlElement(name = "DATA_STATUS")
+    private String dataStatus;
+    @XmlElement(name = "TIPO_NF")
+    private String tipoNf;
+    @XmlElement(name = "TIPO_VOLUME")
+    private String tipoVolume;
+    @XmlElement(name = "SERIE_NF")
+    private String serieNf;
+    @XmlElement(name = "NUM_NF")
+    private String numNf;
+    @XmlElement(name = "DATA_NF")
+    private String dataNf;
+    @XmlElement(name = "CHAVE_NF")
+    private String chaveNf;
+    @XmlElement(name = "NOME_TRANSP")
+    private String nomeTransp;
+    @XmlElement(name = "METODO_ENVIO")
+    private String metodoEnvio;
+    @XmlElement(name = "NUMERO_RASTREIO")
+    private String numeroRastreio;
+    @XmlElement(name = "XML_NF")
+    private String xmlNf;
+
+
     @XmlElement(name = "EXTERNALID")
     private String externalId;
     @XmlElement(name = "ACTIVE")
@@ -100,12 +129,12 @@ public class ObjetoTOTVS {
     private String defaultt;
 
 
-    public Long getId() {
-        return id;
+    public Long getIdTotvs() {
+        return idTotvs;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdTotvs(Long idTotvs) {
+        this.idTotvs = idTotvs;
     }
 
     public String getName() {
@@ -450,5 +479,109 @@ public class ObjetoTOTVS {
 
     public void setCodMunicipio(String codMunicipio) {
         this.codMunicipio = codMunicipio;
+    }
+
+    public String getIdOrigem() {
+        return idOrigem;
+    }
+
+    public void setIdOrigem(String idOrigem) {
+        this.idOrigem = idOrigem;
+    }
+
+    public String getCodigoStatus() {
+        return codigoStatus;
+    }
+
+    public void setCodigoStatus(String codigoStatus) {
+        this.codigoStatus = codigoStatus;
+    }
+
+    public String getDataStatus() {
+        return dataStatus;
+    }
+
+    public void setDataStatus(String dataStatus) {
+        this.dataStatus = dataStatus;
+    }
+
+    public String getTipoNf() {
+        return tipoNf;
+    }
+
+    public void setTipoNf(String tipoNf) {
+        this.tipoNf = tipoNf;
+    }
+
+    public String getTipoVolume() {
+        return tipoVolume;
+    }
+
+    public void setTipoVolume(String tipoVolume) {
+        this.tipoVolume = tipoVolume;
+    }
+
+    public String getSerieNf() {
+        return serieNf;
+    }
+
+    public void setSerieNf(String serieNf) {
+        this.serieNf = serieNf;
+    }
+
+    public String getNumNf() {
+        return numNf;
+    }
+
+    public void setNumNf(String numNf) {
+        this.numNf = numNf;
+    }
+
+    public String getDataNf() {
+        return dataNf;
+    }
+
+    public void setDataNf(String dataNf) {
+        this.dataNf = dataNf;
+    }
+
+    public String getChaveNf() {
+        return chaveNf;
+    }
+
+    public void setChaveNf(String chaveNf) {
+        this.chaveNf = chaveNf;
+    }
+
+    public String getNomeTransp() {
+        return nomeTransp;
+    }
+
+    public void setNomeTransp(String nomeTransp) {
+        this.nomeTransp = nomeTransp;
+    }
+
+    public String getMetodoEnvio() {
+        return metodoEnvio;
+    }
+
+    public void setMetodoEnvio(String metodoEnvio) {
+        this.metodoEnvio = metodoEnvio;
+    }
+
+    public String getNumeroRastreio() {
+        return numeroRastreio;
+    }
+
+    public void setNumeroRastreio(String numeroRastreio) {
+        this.numeroRastreio = numeroRastreio;
+    }
+
+    public String getXmlNf() {
+        return xmlNf;
+    }
+
+    public void setXmlNf(String xmlNf) {
+        this.xmlNf = xmlNf;
     }
 }

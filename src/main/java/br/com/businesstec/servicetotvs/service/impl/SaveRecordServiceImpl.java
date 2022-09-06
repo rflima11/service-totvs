@@ -1,6 +1,7 @@
 package br.com.businesstec.servicetotvs.service.impl;
 
 import br.com.businesstec.servicetotvs.dto.SaveRecordParametrosDTO;
+import br.com.businesstec.servicetotvs.dto.SaveRecordRequest;
 import br.com.businesstec.servicetotvs.service.SaveRecordService;
 import br.com.businesstec.servicetotvs.soap.SaveRecordSoap;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,8 @@ public class SaveRecordServiceImpl implements SaveRecordService {
         this.saveRecordSoap = saveRecordSoap;
     }
 
-    public String salvarRegistro(SaveRecordParametrosDTO parametros) {
+    public String salvarRegistro(SaveRecordRequest parametros) {
         var result = saveRecordSoap.saveRecord(parametros).getSaveRecordResult();
-
         return result.getValue();
     }
 }

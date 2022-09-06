@@ -12,6 +12,6 @@ public interface CategoriaEcommerceMapper {
 
     CategoriaEcommerceMapper INSTANCE = Mappers.getMapper(CategoriaEcommerceMapper.class);
 
-    @Mapping(source = "id", target = "idCategoria")
+    @Mapping(source = "idTotvs", target = "idCategoria")
     CategoriaEcommerce map(ObjetoTOTVS dto);
 }

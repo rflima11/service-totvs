@@ -22,7 +22,6 @@ public class ControleExecucaoFluxoEventJetListenner implements ApplicationListen
         this.controleExecucaoFluxoService = controleExecucaoFluxoService;
     }
 
-
     @Override
     public void onApplicationEvent(ControleExecucaoFluxoEventJet event) {
         var controleExecucaoFluxo = event.getControleExecucaoFluxoEntidade();

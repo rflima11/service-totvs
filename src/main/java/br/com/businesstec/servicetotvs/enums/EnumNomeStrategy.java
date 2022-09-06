@@ -8,21 +8,18 @@ public enum EnumNomeStrategy {
     MARCA_STRATEGY(2L),
     CATEGORIA_STRATEGY(3L),
     VARIACAO_STRATEGY(4L),
-    LISTA_VARIACAO_STRATEGY(6L),
+    SKU_STRATEGY(5L),
+    PRECO_PRODUTO(6L),
     ESTOQUE_PRODUTO(7L),
-    PRECO_PRODUTO(11L),
     IMAGEM_PRODUTO(8L),
     CLIENTE_STRATEGY(9L),
-    SKU_STRATEGY(5L);
+    PEDIDO_STRATEGY(10L),
+    STATUS_PEDIDO_STRATEGY(11L);
 
     Long value;
 
     EnumNomeStrategy(long value) {
         this.value = value;
-    }
-
-    EnumNomeStrategy getStrategyById(int id) {
-        return null;
     }
 
     public static EnumNomeStrategy getStrategyByIdEntidade(Long idEntidade) {

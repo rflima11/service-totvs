@@ -15,10 +15,16 @@ public class SoapUtils {
 
     private SoapUtils() { throw new IllegalStateException("Classe utilitária não deve ser instanciada"); }
 
-    public static String formatarRequestSaveRecord(SaveRecordParametrosDTO request) {
+    public static String formatarRequestSaveRecord(SaveRecordRequest request) {
         String xmlString = "";
         try {
-            JAXBContext context = JAXBContext.newInstance(SaveRecordParametrosDTO.class);
+            JAXBContext context = null;
+            if (request instanceof SaveRecordParametrosDTO) {
+                context = JAXBContext.newInstance(SaveRecordParametrosDTO.class);
+            } else {
+                context = JAXBContext.newInstance(SaveRecordPedidosDTO.class);
+            }
+
             Marshaller m = context.createMarshaller();
 
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

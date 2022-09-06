@@ -4,5 +4,5 @@ import br.com.businesstec.model.entities.ProdutoEcommerce;
 
 public interface ProdutoEcommerceService {
 
-    ProdutoEcommerce salvar(ProdutoEcommerce produtoEcommerce);
+    ProdutoEcommerce salvar(ProdutoEcommerce produtoEcommerce, Long idProduto);
 }

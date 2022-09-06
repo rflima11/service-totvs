@@ -4,6 +4,8 @@ import br.com.businesstec.model.entities.ControleExecucaoFluxo;
 import br.com.businesstec.model.entities.Variacao;
 import br.com.businesstec.model.repository.VariacaoItemRepository;
 import br.com.businesstec.model.repository.VariacaoRepository;
+import br.com.businesstec.servicetotvs.dto.RealizarConsultaParametrosDTO;
+import br.com.businesstec.servicetotvs.enums.ConsultaParametrosEnum;
 import br.com.businesstec.servicetotvs.enums.EntidadeEnum;
 import br.com.businesstec.servicetotvs.dto.ObjetoTOTVS;
 import br.com.businesstec.servicetotvs.enums.EnumParametersSoap;
@@ -55,7 +57,8 @@ public class VariacaoServiceImpl implements VariacaoService {
 
     @Override
     public void salvarVariacoesItem(ControleExecucaoFluxo controleExecucaoFluxo, String externalId, Long idVariacao) {
-        var request = ConsultaSimpleFactory.getParametrosConsulta(controleExecucaoFluxo.getDataHora(), EntidadeEnum.VARIACOES_ITEM.getValue());
+        var request = new RealizarConsultaParametrosDTO(ConsultaParametrosEnum.COD_SETENCA_VARIACOES_ITEM.getValue());
+        request.adicionarDataSinc(controleExecucaoFluxo.getDataHora());
         request.adicionarParametro(EnumParametersSoap.ID_VARIACAO, externalId);
 
         var response = consultaSqlService
@@ -73,10 +76,5 @@ public class VariacaoServiceImpl implements VariacaoService {
             });
         }
 
-    }
-
-    @Override
-    public boolean isVariacaoSalva(ObjetoTOTVS objetoTOTVS) {
-        return variacaoRepository.existsByIdentificadorOrigem(objetoTOTVS.getExternalId());
     }
 }

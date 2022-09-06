@@ -7,10 +7,10 @@ public enum EnumTipoEntidade {
     CATEGORIA(3L),
     VARIACAO(4L),
     PRODUTO_SKU(5L),
-    PRODUTO_IMAGEM(8L),
-    PRODUTO_ESTOQUE(7L),
     PRODUTO_PRECO(6L),
-    PRODUTO_SKU_VARIACO(6L);
+    PRODUTO_ESTOQUE(7L),
+    PRODUTO_IMAGEM(8L),
+    STATUS_PEDIDO(11L);
 
 
     private Long value;
